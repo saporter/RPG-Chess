@@ -12,33 +12,27 @@ public class GameManager : MonoBehaviour {
     public GameObject Highlights;
     public GameObject TestPiece;
 
-    private GameObject[,] board;
+    private List<GameObject> board;
     private int testx, testy;
 
     // Use this for initialization
 	void Start () {
-        board = new GameObject[4,8];
-        //x = 0; y = 0;
+        board = new List<GameObject>();
 
-        int i = 0;
-        int j = 0;
         foreach(Outline h in Highlights.transform.GetComponentsInChildren<Outline>())
         {
-            board[i, j] = h.gameObject;
-            h.enabled = false;
-            i = ++i % 4;
-            j = i == 0 ? ++j % 8 : j;
+            board.Add(h.gameObject);
         }
 
         testx = 2;
         testy = 4;
-        TestPiece.transform.position = board[testx, testy].transform.position;
+        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
+        AllOff();
 	}
 	
 	// Update is called once per frame
     void Update () {
-
-
+        
         if (CrossPlatformInputManager.GetButtonUp("Horizontal"))
         {
             float input = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -65,7 +59,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        TestPiece.transform.position = board[testx, testy].transform.position;
+        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
 
 	}
 
@@ -74,19 +68,19 @@ public class GameManager : MonoBehaviour {
         AllOff();
         if (testx != 0)
         {
-            board[testx - 1, testy].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx - 1, testy)].GetComponent<Outline>().enabled = true;
         }
         if (testx != 3)
         {
-            board[testx + 1, testy].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx + 1, testy)].GetComponent<Outline>().enabled = true;
         }
         if (testy != 0)
         {
-            board[testx, testy - 1].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx, testy - 1)].GetComponent<Outline>().enabled = true;
         }
         if (testy != 7)
         {
-            board[testx, testy + 1].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx, testy + 1)].GetComponent<Outline>().enabled = true;
         }
     }
 
@@ -95,26 +89,6 @@ public class GameManager : MonoBehaviour {
         AllOff();
     }
 
-    private void CheckMouse()
-    {
-        AllOff();
-        if (testx != 0)
-        {
-            board[testx - 1, testy].GetComponent<Outline>().enabled = true;
-        }
-        if (testx != 3)
-        {
-            board[testx + 1, testy].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 0)
-        {
-            board[testx, testy - 1].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 7)
-        {
-            board[testx, testy + 1].GetComponent<Outline>().enabled = true;
-        }
-    }
 
     private void AllOff()
     {
@@ -122,5 +96,12 @@ public class GameManager : MonoBehaviour {
         {
             go.GetComponent<Outline>().enabled = false;
         }
+    }
+
+    /*
+     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
+     * */
+    private int getIndex(int x, int y){
+        return 4 * y + x;
     }
 }
