@@ -1,42 +1,17 @@
 fileFormatVersion: 2
-guid: 37f2e992533599e438922655ee0e7470
-timeCreated: 1517300535
+guid: 8484383ac05ce8b44ae0b73eb3c5519e
+timeCreated: 1517901860
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: BasicBisho
-    100002: //RootNode
-    100004: King
-    100006: Knight
-    100008: pawn
-    100010: queen
-    100012: Rook
-    400000: BasicBisho
-    400002: //RootNode
-    400004: King
-    400006: Knight
-    400008: pawn
-    400010: queen
-    400012: Rook
-    2300000: BasicBisho
-    2300002: King
-    2300004: Knight
-    2300006: pawn
-    2300008: queen
-    2300010: Rook
-    3300000: BasicBisho
-    3300002: King
-    3300004: Knight
-    3300006: pawn
-    3300008: queen
-    3300010: Rook
-    4300000: BasicBisho
-    4300002: Rook
-    4300004: queen
-    4300006: King
-    4300008: Knight
-    4300010: pawn
+    100000: //RootNode
+    400000: //RootNode
+    2100000: No Name
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: queen
+    6400000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,9 +42,9 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.5
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -89,9 +64,9 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 0
+    normalImportMode: 1
     tangentImportMode: 3
-    normalCalculationMode: 4
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
