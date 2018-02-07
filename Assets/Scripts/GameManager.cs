@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
         testx = 2;
         testy = 4;
         TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
+
         AllOff();
 	}
 
