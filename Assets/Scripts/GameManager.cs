@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour {
     private int testx, testy;
 
     // Use this for initialization
-	void Start () {
+	void Start () 
+    {
         board = new List<GameObject>();
 
         foreach(Outline h in Highlights.transform.GetComponentsInChildren<Outline>())
         {
             board.Add(h.gameObject);
+            h.GetComponent<Square>().OnClick.AddListener(SquareClicked);
         }
 
         testx = 2;
@@ -29,6 +31,11 @@ public class GameManager : MonoBehaviour {
         TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
         AllOff();
 	}
+
+    private void SquareClicked()
+    {
+        Debug.Log("Hello from GM: ");
+    }
 	
 	// Update is called once per frame
     void Update () {
@@ -101,7 +108,8 @@ public class GameManager : MonoBehaviour {
     /*
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
      * */
-    private int getIndex(int x, int y){
+    private int getIndex(int x, int y)
+    {
         return 4 * y + x;
     }
 }

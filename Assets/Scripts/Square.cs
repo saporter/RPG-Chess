@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Square : MonoBehaviour {
-    [SerializeField]
+    [System.Serializable]
     public class SquareEvent : UnityEvent {}
     [SerializeField]
     public SquareEvent OnClick;
@@ -21,6 +21,7 @@ public class Square : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        Debug.Log("Mouse clicked");
+        Debug.Log("Mouse clicked " + transform.position);
+        OnClick.Invoke();
     }
 }
