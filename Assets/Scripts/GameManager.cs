@@ -4,56 +4,46 @@ using UnityEngine;
 using cakeslice;
 using UnityStandardAssets.CrossPlatformInput;
 
+/*
+ * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
+ * Player can a move a random piece up, down, left or right.  Movable squares will highlight on mouse rollover.
+ * */
 public class GameManager : MonoBehaviour {
     public GameObject Highlights;
     public GameObject TestPiece;
 
-    private GameObject[,] board;
+    private List<GameObject> board;
     private int testx, testy;
 
     // Use this for initialization
-	void Start () {
-        board = new GameObject[8,8];
-        //x = 0; y = 0;
+	void Start () 
+    {
+        board = new List<GameObject>();
 
-        int i = 0;
-        int j = 0;
         foreach(Outline h in Highlights.transform.GetComponentsInChildren<Outline>())
         {
-            board[i, j] = h.gameObject;
-            //Debug.Log(h.name);
-            h.enabled = false;
-            i = ++i % 8;
-            j = i == 0 ? ++j % 8 : j;
+            board.Add(h.gameObject);
+            h.GetComponent<Square>().OnClick.AddListener(SquareClicked);
         }
 
-        testx = 4;
+        testx = 2;
         testy = 4;
-        TestPiece.transform.position = board[testx, testy].transform.position;
+        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
+        AllOff();
 	}
+
+    private void SquareClicked()
+    {
+        Debug.Log("Hello from GM: ");
+    }
 	
 	// Update is called once per frame
-    //private float timer = 0f;
-    //private Outline previous;
-    //private int x, y;
     void Update () {
-        //if(Time.time - timer > .25f){
-        //    timer = Time.time;
-
-        //    if(previous != null){
-        //        previous.enabled = false;
-        //    }
-        //    previous = board[x, y].GetComponent<Outline>();
-        //    previous.enabled = true;
-        //    x = ++x % 8;
-        //    y = x == 0 ? ++y % 8 : y;
-        //}
-
-
+        
         if (CrossPlatformInputManager.GetButtonUp("Horizontal"))
         {
             float input = CrossPlatformInputManager.GetAxis("Horizontal");
-            if (input > 0 && testx < 7)
+            if (input > 0 && testx < 3)
             {
                 testx++;
             }
@@ -76,7 +66,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        TestPiece.transform.position = board[testx, testy].transform.position;
+        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
 
 	}
 
@@ -85,19 +75,19 @@ public class GameManager : MonoBehaviour {
         AllOff();
         if (testx != 0)
         {
-            board[testx - 1, testy].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx - 1, testy)].GetComponent<Outline>().enabled = true;
         }
-        if (testx != 7)
+        if (testx != 3)
         {
-            board[testx + 1, testy].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx + 1, testy)].GetComponent<Outline>().enabled = true;
         }
         if (testy != 0)
         {
-            board[testx, testy - 1].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx, testy - 1)].GetComponent<Outline>().enabled = true;
         }
         if (testy != 7)
         {
-            board[testx, testy + 1].GetComponent<Outline>().enabled = true;
+            board[getIndex(testx, testy + 1)].GetComponent<Outline>().enabled = true;
         }
     }
 
@@ -106,26 +96,6 @@ public class GameManager : MonoBehaviour {
         AllOff();
     }
 
-    private void CheckMouse()
-    {
-        AllOff();
-        if (testx != 0)
-        {
-            board[testx - 1, testy].GetComponent<Outline>().enabled = true;
-        }
-        if (testx != 7)
-        {
-            board[testx + 1, testy].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 0)
-        {
-            board[testx, testy - 1].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 7)
-        {
-            board[testx, testy + 1].GetComponent<Outline>().enabled = true;
-        }
-    }
 
     private void AllOff()
     {
@@ -133,5 +103,13 @@ public class GameManager : MonoBehaviour {
         {
             go.GetComponent<Outline>().enabled = false;
         }
+    }
+
+    /*
+     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
+     * */
+    private int getIndex(int x, int y)
+    {
+        return 4 * y + x;
     }
 }
