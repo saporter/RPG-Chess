@@ -10,33 +10,42 @@ using UnityStandardAssets.CrossPlatformInput;
  * */
 public class GameManager : MonoBehaviour {
     public GameObject Highlights;
-    public GameObject TestPiece;
+    public GameObject TestPiece;        // This is a temporary var for demonstration and will be deleted soon
+    private Square testPieceLocation;   // This is a temporary var for demonstration and will be deleted soon
 
     private List<GameObject> board;
-    private int testx, testy;
+    private int testx, testy;           // These are temporary vars for demonstration and will be deleted soon
+
+    /*
+     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
+     * Static so that it can be used by Chess Piece implementations for convenience
+     */
+    public static int GetBoardIndex(int x, int y)
+    {
+        return 4 * y + x;
+    }
 
     // Use this for initialization
 	void Start () 
     {
         board = new List<GameObject>();
-
         foreach(Outline h in Highlights.transform.GetComponentsInChildren<Outline>())
         {
             board.Add(h.gameObject);
             h.GetComponent<Square>().OnClick.AddListener(SquareClicked);
         }
 
+        // The rest of this is for demonstration only.  Will be deleted soon.
         testx = 2;
         testy = 4;
-        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
+        testPieceLocation = board[GetBoardIndex(testx, testy)].GetComponent<Square>();
+        TestPiece.transform.position = testPieceLocation.transform.position;
+        testPieceLocation.Piece = TestPiece.GetComponent<IChessPiece>();
 
         AllOff();
 	}
 
-    private void SquareClicked()
-    {
-        Debug.Log("Hello from GM: ");
-    }
+
 	
 	// Update is called once per frame
     void Update () {
@@ -67,36 +76,34 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        TestPiece.transform.position = board[getIndex(testx, testy)].transform.position;
-
+        testPieceLocation.Piece = null;
+        testPieceLocation = board[GetBoardIndex(testx, testy)].GetComponent<Square>();
+        TestPiece.transform.position = testPieceLocation.transform.position;
+        testPieceLocation.Piece = TestPiece.GetComponent<IChessPiece>();
 	}
-
-    public void HighlightTest()
-    {
-        AllOff();
-        if (testx != 0)
-        {
-            board[getIndex(testx - 1, testy)].GetComponent<Outline>().enabled = true;
-        }
-        if (testx != 3)
-        {
-            board[getIndex(testx + 1, testy)].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 0)
-        {
-            board[getIndex(testx, testy - 1)].GetComponent<Outline>().enabled = true;
-        }
-        if (testy != 7)
-        {
-            board[getIndex(testx, testy + 1)].GetComponent<Outline>().enabled = true;
-        }
-    }
 
     public void Off()
     {
         AllOff();
     }
 
+    private void SquareClicked(Square square)
+    {
+        AllOff();
+
+        // TODO: Need to add more user input logic.  For now, all this does is highlight available moves
+        // ..
+
+        // highlight valid moves
+        if (square.Piece != null)
+        {
+            List<int> validMoves = square.Piece.AvailableMoves(board, getIndex(square));
+            foreach (int i in validMoves)
+            {
+                board[i].GetComponent<Outline>().enabled = true;
+            }
+        }
+    }
 
     private void AllOff()
     {
@@ -107,10 +114,15 @@ public class GameManager : MonoBehaviour {
     }
 
     /*
-     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
+     * Determines what index this square corresponds to
      * */
-    private int getIndex(int x, int y)
+    private int getIndex(Square square)
     {
-        return 4 * y + x;
+        for (int i = 0; i < board.Count; ++i)
+        {
+            if(board[i].GetComponent<Square>() == square) { return i; }
+        }
+        Debug.LogWarning("Square not found on board");
+        return -1;
     }
 }

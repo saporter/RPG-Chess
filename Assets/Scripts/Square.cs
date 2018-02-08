@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Square : MonoBehaviour {
+    // Event system for managing clicks
     [System.Serializable]
-    public class SquareEvent : UnityEvent {}
+    public class SquareEvent : UnityEvent<Square> {}
     [SerializeField]
     public SquareEvent OnClick;
+
+    // The piece located at this square
+    public IChessPiece Piece;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +25,6 @@ public class Square : MonoBehaviour {
 
     private void OnMouseUp()
     {
-        Debug.Log("Mouse clicked " + transform.position);
-        OnClick.Invoke();
+        OnClick.Invoke(this);
     }
 }
