@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using cakeslice;
-using UnityStandardAssets.CrossPlatformInput;
 
 /*
  * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
  * Player can a move a random piece up, down, left or right.  Movable squares will highlight on mouse rollover.
  * */
 public class GameManager : MonoBehaviour {
-    public GameObject Highlights;
-    public GameObject TestPiece;        // **This is a temporary var for demonstration and will be deleted soon
-
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
     private Affiliation currentTurn;    // The player's whos turn it currently is
@@ -25,27 +21,31 @@ public class GameManager : MonoBehaviour {
         return 4 * y + x;
     }
 
-    // Use this for initialization
-	void Start () 
+    /*
+     * The old board will be destroyed, and the new board will be used
+     */ 
+    public void ResetBoard(List<GameObject> newBoard)
     {
-        board = new List<GameObject>();
-        foreach(Outline h in Highlights.transform.GetComponentsInChildren<Outline>())
-        {
-            board.Add(h.gameObject);
-            h.GetComponent<Square>().OnClick.AddListener(SquareClicked);
+        // Delete old board if one exists
+        if(board != null){
+            foreach(GameObject go in board){
+                Destroy(go);
+            }
+            board.Clear();
         }
+
+        // Add GameManager as listener to onClick events
+        board = newBoard;
+        foreach(GameObject go in board)
+        {
+            go.GetComponent<Square>().OnClick.AddListener(SquareClicked);
+        }
+
+        // Start the game with White as current player
         currentTurn = Affiliation.White;
         selectedIndex = -1;
-
-        // The rest of this is for demonstration only.  Will be deleted soon.
-        int testx = 2;
-        int testy = 4;
-        IChessPiece piece = TestPiece.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[GetBoardIndex(testx, testy)].GetComponent<Square>().transform.position;
-        board[GetBoardIndex(testx, testy)].GetComponent<Square>().Piece = piece;
-                                          
-        AllOff();
-	}
+        allOff();
+    }
 
     private void SquareClicked(Square square)
     {
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
         { 
             
             if(selectedIndex < 0){
-                Debug.LogError("A piece has not been selected yet.  All outlines should be off.  Did you miss a call to AllOff() somewhere?");
+                Debug.LogError("A piece has not been selected yet.  All outlines should be off.  Did you miss a call to allOff() somewhere?");
             }
 
             // Execute the moves of previously selected piece to the new square
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour {
         } else if (square.Piece != null)  
         { 
             // highlight valid moves
-            AllOff();
+            allOff();
             selectedIndex = getIndex(square);
             List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)
@@ -80,10 +80,10 @@ public class GameManager : MonoBehaviour {
             return; // Do not call AllOff() before exiting method
         }
 
-        AllOff();
+        allOff();
     }
 
-    private void AllOff()
+    private void allOff()
     {
         foreach(GameObject go in board)
         {
