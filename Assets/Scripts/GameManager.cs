@@ -10,11 +10,11 @@ using UnityStandardAssets.CrossPlatformInput;
  * */
 public class GameManager : MonoBehaviour {
     public GameObject Highlights;
-    public GameObject TestPiece;        // This is a temporary var for demonstration and will be deleted soon
-    private Square testPieceLocation;   // This is a temporary var for demonstration and will be deleted soon
+    public GameObject TestPiece;        // **This is a temporary var for demonstration and will be deleted soon
 
     private List<GameObject> board;
-    private int testx, testy;           // These are temporary vars for demonstration and will be deleted soon
+    private int selectedIndex;          // Currently selected piece that is about to move
+    private Affiliation currentTurn;    // The player's whos turn it currently is
 
     /*
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
@@ -34,75 +34,53 @@ public class GameManager : MonoBehaviour {
             board.Add(h.gameObject);
             h.GetComponent<Square>().OnClick.AddListener(SquareClicked);
         }
+        currentTurn = Affiliation.White;
+        selectedIndex = -1;
 
         // The rest of this is for demonstration only.  Will be deleted soon.
-        testx = 2;
-        testy = 4;
-        testPieceLocation = board[GetBoardIndex(testx, testy)].GetComponent<Square>();
-        TestPiece.transform.position = testPieceLocation.transform.position;
-        testPieceLocation.Piece = TestPiece.GetComponent<IChessPiece>();
-
+        int testx = 2;
+        int testy = 4;
+        IChessPiece piece = TestPiece.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[GetBoardIndex(testx, testy)].GetComponent<Square>().transform.position;
+        board[GetBoardIndex(testx, testy)].GetComponent<Square>().Piece = piece;
+                                          
         AllOff();
 	}
-
-
-	
-	// Update is called once per frame
-    void Update () {
-        
-        if (CrossPlatformInputManager.GetButtonUp("Horizontal"))
-        {
-            float input = CrossPlatformInputManager.GetAxis("Horizontal");
-            if (input > 0 && testx < 3)
-            {
-                testx++;
-            }
-            else if (input < 0 && testx > 0)
-            {
-                testx--;
-            }
-        }
-
-        if (CrossPlatformInputManager.GetButtonUp("Vertical"))
-        {
-            float input = CrossPlatformInputManager.GetAxis("Vertical");
-            if (input < 0 && testy < 7)
-            {
-                testy++;
-            }
-            else if (input > 0 && testy > 0)
-            {
-                testy--;
-            }
-        }
-
-        testPieceLocation.Piece = null;
-        testPieceLocation = board[GetBoardIndex(testx, testy)].GetComponent<Square>();
-        TestPiece.transform.position = testPieceLocation.transform.position;
-        testPieceLocation.Piece = TestPiece.GetComponent<IChessPiece>();
-	}
-
-    public void Off()
-    {
-        AllOff();
-    }
 
     private void SquareClicked(Square square)
     {
-        AllOff();
+        if (square.GetComponent<Outline>().enabled)
+        { 
+            
+            if(selectedIndex < 0){
+                Debug.LogError("A piece has not been selected yet.  All outlines should be off.  Did you miss a call to AllOff() somewhere?");
+            }
 
-        // TODO: Need to add more user input logic.  For now, all this does is highlight available moves
-        // ..
+            // Execute the moves of previously selected piece to the new square
+            List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, getIndex(square));
+            foreach(ChessCommand action in actions)
+            {
+                action.Execute(board);
+            }
 
-        // highlight valid moves
-        if (square.Piece != null)
-        {
-            List<int> validMoves = square.Piece.AvailableMoves(board, getIndex(square));
+            // Change turns
+            selectedIndex = -1;
+            currentTurn = currentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
+        } else if (square.Piece != null)  
+        { 
+            // highlight valid moves
+            AllOff();
+            selectedIndex = getIndex(square);
+            List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)
             {
                 board[i].GetComponent<Outline>().enabled = true;
             }
+
+            return; // Do not call AllOff() before exiting method
         }
+
+        AllOff();
     }
 
     private void AllOff()

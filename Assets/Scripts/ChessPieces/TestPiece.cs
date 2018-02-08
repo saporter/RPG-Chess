@@ -17,6 +17,9 @@ public class TestPiece : MonoBehaviour, IChessPiece {
         }
     }
 
+    // We don't actually need to implement this IChessPiece Property.  Because it is named "gameObject", the inherited MonoBehavior implemenation satisfies the IChessPiece requirement
+    // public GameObject gameObject { get { return this.gameObject; } }
+
     /*
      * This test piece can move up, down, left and right
      * */
@@ -47,21 +50,13 @@ public class TestPiece : MonoBehaviour, IChessPiece {
 
     public List<ChessCommand> Moved(List<GameObject> board, int from, int to)
     {
-        throw new System.NotImplementedException();
+        List<ChessCommand> moves = new List<ChessCommand>();
+        moves.Add(new MoveCommand(this, from, to));
+        return moves;
     }
 
     public void OnDeath()
     {
         throw new System.NotImplementedException();
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
