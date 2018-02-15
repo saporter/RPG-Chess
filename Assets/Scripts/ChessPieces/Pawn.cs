@@ -40,21 +40,20 @@ public class Pawn : MonoBehaviour, IChessPiece {
             if(board[index].GetComponent<Square>().Piece == null)
             {
                 validMoves.Add(index);
-            }
 
-            // Two moves forward if it's the first move
-            if(startingPosition)
-            {
-                index = GameManager.Instance.GetBoardIndex(x, y + 2 * direction);
-                if (board[index].GetComponent<Square>().Piece == null)
+                // Two moves forward if never moved
+                if (startingPosition)
                 {
-                    validMoves.Add(index);
-                }
-
-                if ((y != 1 && team == Affiliation.Black) || (y != 6 && team == Affiliation.White))
-                {
-                    // An important warning as logic does not test boundaries for second move
-                    Debug.LogWarning("Pawn is not starting on second rank.  Is this intentional?");
+                    index = GameManager.Instance.GetBoardIndex(x, y + 2 * direction);
+                    if (board[index].GetComponent<Square>().Piece == null)
+                    {
+                        validMoves.Add(index);
+                    }
+                    if ((y != 1 && team == Affiliation.Black) || (y != 6 && team == Affiliation.White))
+                    {
+                        // An important warning as logic does not test boundaries for second move
+                        Debug.LogWarning("Pawn is not starting on second rank.  Is this intentional?");
+                    }
                 }
             }
         }
