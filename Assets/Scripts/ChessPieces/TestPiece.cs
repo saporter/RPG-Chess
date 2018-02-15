@@ -31,19 +31,19 @@ public class TestPiece : MonoBehaviour, IChessPiece {
 
         if (x != 0)
         {
-            validMoves.Add(GameManager.GetBoardIndex(x - 1, y));
+            validMoves.Add(GameManager.Instance.GetBoardIndex(x - 1, y));
         }
         if (x != 3)
         {
-            validMoves.Add(GameManager.GetBoardIndex(x + 1, y));
+            validMoves.Add(GameManager.Instance.GetBoardIndex(x + 1, y));
         }
         if (y != 0)
         {
-            validMoves.Add(GameManager.GetBoardIndex(x, y - 1));
+            validMoves.Add(GameManager.Instance.GetBoardIndex(x, y - 1));
         }
         if (y != 7)
         {
-            validMoves.Add(GameManager.GetBoardIndex(x, y + 1));
+            validMoves.Add(GameManager.Instance.GetBoardIndex(x, y + 1));
         }
         return validMoves;
     }

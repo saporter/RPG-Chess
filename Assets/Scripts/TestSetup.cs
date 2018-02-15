@@ -26,23 +26,23 @@ public class TestSetup : MonoBehaviour {
         int x = 2;
         int y = 4;
         IChessPiece piece = TestPiece.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         // Place pawn
         x = 0;
         y = 6;
         piece = WhitePawn.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         for (int i = 0; i < 4; ++i){
             x = i;
             y = 6;
             GameObject go = Instantiate(WhitePawn);
             piece = go.GetComponent<IChessPiece>();
-            piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-            board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+            piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
         }
 
         for (int i = 0; i < 4; ++i)
@@ -51,8 +51,8 @@ public class TestSetup : MonoBehaviour {
             y = 1;
             GameObject go = Instantiate(BlackPawn);
             piece = go.GetComponent<IChessPiece>();
-            piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-            board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+            piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
         }
 
         // --- ** ----

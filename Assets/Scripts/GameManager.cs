@@ -6,8 +6,12 @@ using cakeslice;
 /*
  * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
  * Player can a move a random piece up, down, left or right.  Movable squares will highlight on mouse rollover.
+ * 
+ * GameManager is a Singleton.  To access instance, call GameManager.Instance - see TestPiece.cs for an example
  * */
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager> {
+    protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
+
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
     private Affiliation currentTurn;    // The player's whos turn it currently is
@@ -16,7 +20,7 @@ public class GameManager : MonoBehaviour {
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
      * Static so that it can be used by Chess Piece implementations for convenience
      */
-    public static int GetBoardIndex(int x, int y)
+    public int GetBoardIndex(int x, int y)
     {
         return 4 * y + x;
     }

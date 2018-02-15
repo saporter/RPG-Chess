@@ -34,7 +34,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         if(y + direction <= 7 && y + direction >= 0)
         {
             // One move forward
-            int index = GameManager.GetBoardIndex(x, y + 1 * direction);
+            int index = GameManager.Instance.GetBoardIndex(x, y + 1 * direction);
             if(board[index].GetComponent<Square>().Piece == null)
             {
                 validMoves.Add(index);
@@ -43,7 +43,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
             // Two moves forward if it's the first move
             if(startingPosition)
             {
-                index = GameManager.GetBoardIndex(x, y + 2 * direction);
+                index = GameManager.Instance.GetBoardIndex(x, y + 2 * direction);
                 if (board[index].GetComponent<Square>().Piece == null)
                 {
                     validMoves.Add(index);
@@ -60,7 +60,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         // Capture logic
         // TODO: add en passant logic
         if(x != 0 && y != 7 && y != 0){
-            int index = GameManager.GetBoardIndex(x - 1, y + 1 * direction);
+            int index = GameManager.Instance.GetBoardIndex(x - 1, y + 1 * direction);
 
             // if(an enemy piece is found)
             if(board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team){
@@ -69,7 +69,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         }
         if (x != 7 && y != 7 && y != 0)
         {
-            int index = GameManager.GetBoardIndex(x + 1, y + 1 * direction);
+            int index = GameManager.Instance.GetBoardIndex(x + 1, y + 1 * direction);
 
             // if(an enemy piece is found)
             if (board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team)
