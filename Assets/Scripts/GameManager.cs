@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using cakeslice;
 
 /*
@@ -12,9 +13,16 @@ using cakeslice;
 public class GameManager : Singleton<GameManager> {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
+    // Event system for managing clicks
+    [System.Serializable]
+    public class GameEvent : UnityEvent { }
+    [SerializeField]
+    public GameEvent TurnChanged;
+
+    public Affiliation CurrentTurn;
+
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
-    private Affiliation currentTurn;    // The player's whos turn it currently is
 
     /*
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
@@ -46,7 +54,7 @@ public class GameManager : Singleton<GameManager> {
         }
 
         // Start the game with White as current player
-        currentTurn = Affiliation.White;
+        CurrentTurn = Affiliation.White;
         selectedIndex = -1;
         allOff();
     }
@@ -69,7 +77,8 @@ public class GameManager : Singleton<GameManager> {
 
             // Change turns
             selectedIndex = -1;
-            currentTurn = currentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
+            CurrentTurn = CurrentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
+            TurnChanged.Invoke();
         } else if (square.Piece != null)  
         { 
             // highlight valid moves
