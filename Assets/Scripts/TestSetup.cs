@@ -11,6 +11,8 @@ public class TestSetup : MonoBehaviour {
     public GameManager gameManager;
     public GameObject BoardSquares;
     public GameObject TestPiece;
+    public GameObject WhitePawn;
+    public GameObject BlackPawn;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +23,37 @@ public class TestSetup : MonoBehaviour {
         }
 
         // Put the test piece somewhere
-        int testx = 2;
-        int testy = 4;
+        int x = 2;
+        int y = 4;
         IChessPiece piece = TestPiece.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[GameManager.GetBoardIndex(testx, testy)].GetComponent<Square>().transform.position;
-        board[GameManager.GetBoardIndex(testx, testy)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        // Place pawn
+        x = 0;
+        y = 6;
+        piece = WhitePawn.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        for (int i = 0; i < 4; ++i){
+            x = i;
+            y = 6;
+            GameObject go = Instantiate(WhitePawn);
+            piece = go.GetComponent<IChessPiece>();
+            piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        }
+
+        for (int i = 0; i < 4; ++i)
+        {
+            x = i;
+            y = 1;
+            GameObject go = Instantiate(BlackPawn);
+            piece = go.GetComponent<IChessPiece>();
+            piece.gameObject.transform.position = board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[GameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        }
 
         // --- ** ----
         // This is how to setup up the game manager
