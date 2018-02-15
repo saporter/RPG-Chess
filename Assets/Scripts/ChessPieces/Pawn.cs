@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * A pawn.
+ * A pawn
+ * 
+ * TODO: Still need to add promotion command and logic, and figure out en passant logic
  */ 
 public class Pawn : MonoBehaviour, IChessPiece {
     private bool startingPosition = true;
@@ -93,6 +95,8 @@ public class Pawn : MonoBehaviour, IChessPiece {
             moves.Add(new CaptureCommand(to));
         }
         moves.Add(new MoveCommand(this, from, to));
+
+        // TODO: Add promotion command and logic
 
         return moves;
     }
