@@ -30,6 +30,10 @@ public class GameManager : Singleton<GameManager> {
      */
     public int GetBoardIndex(int x, int y)
     {
+        if(x < 0 || x > 3 || y < 0 || y > 7)
+        {
+            return -1;
+        }
         return 4 * y + x;
     }
 

@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 64011737760951312}
   - component: {fileID: 54375729697014534}
   - component: {fileID: 65245854841372788}
-  - component: {fileID: 114971892358606358}
-  m_Layer: 9
-  m_Name: queen
+  - component: {fileID: 114062073250034540}
+  m_Layer: 2
+  m_Name: queen_white
   m_TagString: white
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1351478530774594}
   m_LocalRotation: {x: 0.000000022815462, y: 0.70710665, z: -0.000000022815454, w: 0.7071069}
-  m_LocalPosition: {x: -1.12, y: -0, z: -4.37}
+  m_LocalPosition: {x: 1.4143615, y: 0.0088728415, z: -2.3838735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8484383ac05ce8b44ae0b73eb3c5519e, type: 3}
+  - {fileID: 2100000, guid: 35447ffb7ffff413cbdb130b53f08d5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +96,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -127,7 +127,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7780001, y: 1.5027401, z: 0.7780001}
   m_Center: {x: 0.001731023, y: 0.7424972, z: 0.00000010430811}
---- !u!114 &114971892358606358
+--- !u!114 &114062073250034540
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,8 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1351478530774594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6696b2109eb796447af61512307f6d6d, type: 3}
+  m_Script: {fileID: 11500000, guid: ef2cf46db0aab4a038cd49e5791a43b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPiece: 4
-  myCoords: {x: 0, y: 0}
+  team: 0

@@ -12,8 +12,10 @@ public class TestSetup : MonoBehaviour {
 
     public GameObject WhitePawn;
     public GameObject WhiteKing;
+    public GameObject WhiteQueen;
     public GameObject BlackPawn;
     public GameObject BlackKing;
+    public GameObject BlackQueen;
 
 	// Use this for initialization
 	void Start () {
@@ -65,6 +67,20 @@ public class TestSetup : MonoBehaviour {
         piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
         board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
+        // Queen
+        x = 1;
+        y = 7;
+        go = Instantiate(WhiteQueen);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        x = 1;
+        y = 0;
+        go = Instantiate(BlackQueen);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
         // --- ** ----
         // This is how to setup up the game manager
         // --- ** ----
