@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 64592566886198894}
   - component: {fileID: 54114213064726718}
   - component: {fileID: 65191825324444850}
+  - component: {fileID: 114522019627295362}
   m_Layer: 2
   m_Name: rook_black
   m_TagString: white
@@ -95,8 +96,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -126,3 +127,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7709268, y: 1.5007256, z: 0.7709268}
   m_Center: {x: -0.0045500556, y: 0.7266367, z: 0.000000089406996}
+--- !u!114 &114522019627295362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638818894355302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf6650d613e14c8a9e5c121dda68a47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
