@@ -14,6 +14,9 @@ public class TestSetup : MonoBehaviour {
     public GameObject WhiteKing;
     public GameObject BlackPawn;
     public GameObject BlackKing;
+    public GameObject WhiteRook;
+    public GameObject BlackRook;
+
 
 	// Use this for initialization
 	void Start () {
@@ -64,6 +67,37 @@ public class TestSetup : MonoBehaviour {
         piece = go.GetComponent<IChessPiece>();
         piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
         board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        // Rooks
+        x = 3;
+        y = 7;
+        go = Instantiate(WhiteRook);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        x = 3;
+        y = 0;
+        go = Instantiate(BlackRook);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        x = 0;
+        y = 7;
+        go = Instantiate(WhiteRook);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        x = 0;
+        y = 0;
+        go = Instantiate(BlackRook);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+
 
         // --- ** ----
         // This is how to setup up the game manager
