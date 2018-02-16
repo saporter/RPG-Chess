@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 64415681320414494}
   - component: {fileID: 54461083271824148}
   - component: {fileID: 65912909262072608}
-  - component: {fileID: 114955288456970450}
-  m_Layer: 9
-  m_Name: bishop
+  - component: {fileID: 114780586149767928}
+  m_Layer: 2
+  m_Name: bishop_white
   m_TagString: white
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: c6c6ee8ef1c01b2439949e3c2ce10ad1, type: 3}
+  - {fileID: 2100000, guid: 35447ffb7ffff413cbdb130b53f08d5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,8 +96,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -127,7 +127,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6816612, y: 1.7163255, z: 0.6816612}
   m_Center: {x: 0.033991855, y: 0.84795475, z: 0.00000008940695}
---- !u!114 &114955288456970450
+--- !u!114 &114780586149767928
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,8 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144577762022746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6696b2109eb796447af61512307f6d6d, type: 3}
+  m_Script: {fileID: 11500000, guid: e9442ce0e5ff7486a99186dd986264ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisPiece: 2
-  myCoords: {x: 0, y: 0}
+  team: 0
