@@ -13,18 +13,32 @@ public class Square : MonoBehaviour {
     // The piece located at this square
     public IChessPiece Piece;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private bool listenForClick = true;
+
+    private void Start()
+    {
+        GameManager.Instance.PromotionEvent.AddListener(pauseClicking);
+        listenForClick = true;
+    }
+
+    private void pauseClicking(int location, string type)
+    {
+        listenForClick = type.Contains("Off");
+    }
 
     private void OnMouseUp()
     {
-        OnClick.Invoke(this);
+        if (listenForClick)
+        {
+            OnClick.Invoke(this);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PromotionEvent.RemoveListener(pauseClicking);  // A good habit to get into
+        }
     }
 }

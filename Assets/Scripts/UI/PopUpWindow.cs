@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Show and hides a UI GameObject with a CanvasGroup
+ */ 
 public class PopUpWindow : MonoBehaviour {
     [SerializeField]
     string PopUpType = "";
