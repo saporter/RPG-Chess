@@ -13,16 +13,29 @@ using cakeslice;
 public class GameManager : Singleton<GameManager> {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
-    // Event system for managing clicks
+    // Event system options
     [System.Serializable]
-    public class GameEvent : UnityEvent { }
+    public class GameEvent : UnityEvent { }             // An event that does not require arguments
+    [System.Serializable]
+    public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
+
     [SerializeField]
     public GameEvent TurnChanged;
+    [SerializeField]
+    public LocationEvent PromotionEvent;
 
     public Affiliation CurrentTurn;
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
+
+    public List<GameObject> Board
+    {
+        get
+        {
+            return board;
+        }    
+    }
 
     /*
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array

@@ -5,7 +5,6 @@ using UnityEngine;
 /*
  * A pawn
  * 
- * TODO: Still need to add promotion command and logic
  */ 
 public class Pawn : MonoBehaviour, IChessPiece {
     private bool startingPosition = true;
@@ -137,10 +136,9 @@ public class Pawn : MonoBehaviour, IChessPiece {
         }
 
         // Promotion logic
-        // TODO: Finish this out...
         if(yend == 0 || yend == 7)
         {
-            moves.Add(new PromoteCommand());  
+            moves.Add(new PromoteCommand(to, (team == Affiliation.White? "White" : "Black") + "Pawn"));  
         }
 
         return moves;
