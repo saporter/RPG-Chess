@@ -15,11 +15,13 @@ public class TestSetup : MonoBehaviour {
     public GameObject WhiteQueen;
     public GameObject WhiteBishop;
     public GameObject WhiteRook;
+    public GameObject WhiteKnight;
     public GameObject BlackPawn;
     public GameObject BlackKing;
     public GameObject BlackQueen;
     public GameObject BlackBishop;
     public GameObject BlackRook;
+    public GameObject BlackKnight;
 
 	// Use this for initialization
 	void Start () {
@@ -112,6 +114,21 @@ public class TestSetup : MonoBehaviour {
         x = 3;
         y = 0;
         go = Instantiate(BlackRook);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        // Knight
+        x = 3;
+        y = 5;
+        go = Instantiate(WhiteKnight);
+        piece = go.GetComponent<IChessPiece>();
+        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+
+        x = 3;
+        y = 2;
+        go = Instantiate(BlackKnight);
         piece = go.GetComponent<IChessPiece>();
         piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
         board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
