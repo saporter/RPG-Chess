@@ -165,4 +165,12 @@ public class Pawn : MonoBehaviour, IChessPiece {
             GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
         }
     }
+
+    private void OnDestroy()
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
+        }
+    }
 }

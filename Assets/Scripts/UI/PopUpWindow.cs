@@ -21,6 +21,7 @@ public class PopUpWindow : MonoBehaviour {
         if(type.Contains(PopUpType))
         {
             toggleCanvasGroup(1f, true, true);
+            moveWindow(location);
         }else
         {
             toggleCanvasGroup(0f, false, false);
@@ -35,6 +36,16 @@ public class PopUpWindow : MonoBehaviour {
         cg.blocksRaycasts = blocksRaycasts;
     }
 
+    /*
+     * A lazy implementation that may not work with all screen resolutions
+     */ 
+    private void moveWindow(int location)
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        float x = 30f + (location % 4) * 45f; 
+        float y = (location / 4) > 0 ? -220f : -6.5f; 
+        rt.anchoredPosition = new Vector3(x, y);
+    }
 
     private void OnDestroy()
     {
