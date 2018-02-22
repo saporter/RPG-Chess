@@ -29,6 +29,10 @@ public class GameManager : Singleton<GameManager> {
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
 
+    // For debug and testing.  Remove for build
+    private bool enforceTurns = true;
+    public bool EnforceTurns { get { return enforceTurns; } set { enforceTurns = value; Debug.Log("Turn enforcement now: " + enforceTurns);} }
+
     public List<GameObject> Board
     {
         get
@@ -49,6 +53,8 @@ public class GameManager : Singleton<GameManager> {
         }
         return 4 * y + x;
     }
+
+
 
     /*
      * The old board will be destroyed, and the new board will be used
@@ -98,8 +104,18 @@ public class GameManager : Singleton<GameManager> {
             TurnChanged.Invoke();
         } else if (square.Piece != null)  
         { 
-            // highlight valid moves
+            
             allOff();
+
+            // check turn
+            if(CurrentTurn != square.Piece.Team)
+            {
+                // I don't know how to surround the "if" porton of this statement with a #build tag of some sort to remove for builds
+                if(EnforceTurns)
+                    return; 
+            }
+
+            // highlight valid moves
             selectedIndex = getIndex(square);
             List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)
