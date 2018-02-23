@@ -19,7 +19,10 @@ public class MakePieceAtSquare : MonoBehaviour {
 
     private void Start()
     {
-        GameManager.Instance.PromotionEvent.AddListener(promotedLocation);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PromotionEvent.AddListener(promotedLocation);
+        }
     }
 
     private void promotedLocation(int atLocation, string type)

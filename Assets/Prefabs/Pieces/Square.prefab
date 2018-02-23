@@ -110,6 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b1c59096b044ce3bef866cd161aca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Square+SquareEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114892782038702844
 MonoBehaviour:
   m_ObjectHideFlags: 1
