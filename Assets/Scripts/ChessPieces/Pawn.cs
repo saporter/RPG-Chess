@@ -5,7 +5,6 @@ using UnityEngine;
 /*
  * A pawn
  * 
- * TODO: Still need to add promotion command and logic
  */ 
 public class Pawn : MonoBehaviour, IChessPiece {
     private bool startingPosition = true;
@@ -74,7 +73,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
                 validMoves.Add(index);
             }
         }
-        if (x != 7 && y != 7 && y != 0)
+        if (x != 3 && y != 7 && y != 0)
         {
             int index = GameManager.Instance.GetBoardIndex(x + 1, y + 1 * direction);
 
@@ -136,7 +135,11 @@ public class Pawn : MonoBehaviour, IChessPiece {
             }
         }
 
-        // TODO: Add promotion command and logic
+        // Promotion logic
+        if(yend == 0 || yend == 7)
+        {
+            moves.Add(new PromoteCommand(to, (team == Affiliation.White? "White" : "Black") + "Pawn"));  
+        }
 
         return moves;
     }
@@ -160,6 +163,14 @@ public class Pawn : MonoBehaviour, IChessPiece {
         {
             passantBoardIndex = -1;
             GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(GameManager.Instance != null)
+        {
+            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
         }
     }
 }

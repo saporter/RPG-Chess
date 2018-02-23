@@ -13,16 +13,33 @@ using cakeslice;
 public class GameManager : Singleton<GameManager> {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
-    // Event system for managing clicks
+    // Event system options
     [System.Serializable]
-    public class GameEvent : UnityEvent { }
+    public class GameEvent : UnityEvent { }             // An event that does not require arguments
+    [System.Serializable]
+    public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
+
     [SerializeField]
     public GameEvent TurnChanged;
+    [SerializeField]
+    public LocationEvent PromotionEvent;
 
     public Affiliation CurrentTurn;
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
+
+    // For debug and testing.  Remove for build
+    private bool enforceTurns = true;
+    public bool EnforceTurns { get { return enforceTurns; } set { enforceTurns = value; Debug.Log("Turn enforcement now: " + enforceTurns);} }
+
+    public List<GameObject> Board
+    {
+        get
+        {
+            return board;
+        }    
+    }
 
     /*
      * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
@@ -30,8 +47,14 @@ public class GameManager : Singleton<GameManager> {
      */
     public int GetBoardIndex(int x, int y)
     {
+        if(x < 0 || x > 3 || y < 0 || y > 7)
+        {
+            return -1;
+        }
         return 4 * y + x;
     }
+
+
 
     /*
      * The old board will be destroyed, and the new board will be used
@@ -81,8 +104,18 @@ public class GameManager : Singleton<GameManager> {
             TurnChanged.Invoke();
         } else if (square.Piece != null)  
         { 
-            // highlight valid moves
+            
             allOff();
+
+            // check turn
+            if(CurrentTurn != square.Piece.Team)
+            {
+                // I don't know how to surround the "if" porton of this statement with a #build tag of some sort to remove for builds
+                if(EnforceTurns)
+                    return; 
+            }
+
+            // highlight valid moves
             selectedIndex = getIndex(square);
             List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)

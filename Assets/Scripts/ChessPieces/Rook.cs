@@ -7,7 +7,7 @@ public class Rook : MonoBehaviour, IChessPiece
     private int direction;
 
     [SerializeField]
-    Affiliation team; // White is at the bottom of the screen.  Black on top.  This is important for movement
+    Affiliation team; // White is at the bottom of the screen.  Black on top.
 
 
     public Affiliation Team
@@ -54,74 +54,10 @@ public class Rook : MonoBehaviour, IChessPiece
         allMoves.AddRange(downMoves);
 
         return allMoves;
-
-
-
-        //return new List<int>();
-        //int x = currentPos % 4;
-        //int y = currentPos / 4;
-        //List<int> validMoves = new List<int>();
-
-        //// Movement logic
-        //if(y + direction <= 7 && y + direction >= 0)
-        //{
-        //    // One move forward
-        //    int index = GameManager.Instance.GetBoardIndex(x, y + 1 * direction);
-        //    if(board[index].GetComponent<Square>().Piece == null)
-        //    {
-        //        validMoves.Add(index);
-
-        //        // Two moves forward possible if never moved
-        //        if (startingPosition)
-        //        {
-        //            index = GameManager.Instance.GetBoardIndex(x, y + 2 * direction);
-        //            if (board[index].GetComponent<Square>().Piece == null)
-        //            {
-        //                validMoves.Add(index);
-        //            }
-        //            if ((y != 1 && team == Affiliation.Black) || (y != 6 && team == Affiliation.White))
-        //            {
-        //                // An important warning as logic does not test boundaries for second move
-        //                Debug.LogWarning("Pawn is not starting on second rank.  Is this intentional?");
-        //            }
-        //        }
-        //    }
-        //}
-
-        //// Capture logic
-        //if(x != 0 && y != 7 && y != 0){
-        //    int index = GameManager.Instance.GetBoardIndex(x - 1, y + 1 * direction);
-
-        //    // if(an enemy piece is found)
-        //    if(board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team){
-        //        validMoves.Add(index);
-        //    }
-        //}
-        //if (x != 7 && y != 7 && y != 0)
-        //{
-        //    int index = GameManager.Instance.GetBoardIndex(x + 1, y + 1 * direction);
-
-        //    // if(an enemy piece is found)
-        //    if (board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team)
-        //    {
-        //        validMoves.Add(index);
-        //    }
-        //}
-
-        //// En Passant Logic
-        //if(enPassant > 0)
-        //{
-        //    validMoves.Add(passantBoardIndex);
-        //}
-
-        //return validMoves;
     }
 
     public List<ChessCommand> Moved(List<GameObject> board, int from, int to)
     {
-
-        //return new List<ChessCommand>();
-
         List<ChessCommand> moves = new List<ChessCommand>();
 
         if (board[to].GetComponent<Square>().Piece != null)
@@ -130,11 +66,6 @@ public class Rook : MonoBehaviour, IChessPiece
         }
 
         moves.Add(new MoveCommand(this, from, to));
-
-        int ystart = from / 4;
-        int yend = to / 4;
-
-        // TODO: Add promotion command and logic
 
         return moves;
     }
