@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class MoveToggle : MonoBehaviour {
     public Slider slider;
     public Image handle;
