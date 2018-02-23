@@ -15,7 +15,6 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-        Debug.Log("OnBeginDrag");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -25,13 +24,14 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         ItemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if(transform.parent == startParent)
         {
-            Debug.Log("No OnDrop found, resetting to start");
             transform.position = startPosition;
+        }else
+        {
+            Instantiate(gameObject).transform.SetParent(startParent);
         }
     }
 

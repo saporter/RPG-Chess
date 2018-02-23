@@ -17,10 +17,8 @@ public class DropHandler : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop for " + gameObject.name);
         if(item == null)
         {
-            Debug.Log("resetting parent for " + DragHandler.ItemBeingDragged.name);
             DragHandler.ItemBeingDragged.transform.SetParent(transform);
         }
     }
