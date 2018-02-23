@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using cakeslice;
+using System.Linq;
 
 /*
  * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
@@ -10,7 +11,8 @@ using cakeslice;
  * 
  * GameManager is a Singleton.  To access instance, call GameManager.Instance - see TestPiece.cs for an example
  * */
-public class GameManager : Singleton<GameManager> {
+public class GameManager : Singleton<GameManager>
+{
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
     // Event system options
@@ -31,14 +33,14 @@ public class GameManager : Singleton<GameManager> {
 
     // For debug and testing.  Remove for build
     private bool enforceTurns = true;
-    public bool EnforceTurns { get { return enforceTurns; } set { enforceTurns = value; Debug.Log("Turn enforcement now: " + enforceTurns);} }
+    public bool EnforceTurns { get { return enforceTurns; } set { enforceTurns = value; Debug.Log("Turn enforcement now: " + enforceTurns); } }
 
     public List<GameObject> Board
     {
         get
         {
             return board;
-        }    
+        }
     }
 
     /*
@@ -47,7 +49,7 @@ public class GameManager : Singleton<GameManager> {
      */
     public int GetBoardIndex(int x, int y)
     {
-        if(x < 0 || x > 3 || y < 0 || y > 7)
+        if (x < 0 || x > 3 || y < 0 || y > 7)
         {
             return -1;
         }
@@ -58,12 +60,14 @@ public class GameManager : Singleton<GameManager> {
 
     /*
      * The old board will be destroyed, and the new board will be used
-     */ 
+     */
     public void ResetBoard(List<GameObject> newBoard)
     {
         // Delete old board if one exists
-        if(board != null){
-            foreach(GameObject go in board){
+        if (board != null)
+        {
+            foreach (GameObject go in board)
+            {
                 Destroy(go);
             }
             board.Clear();
@@ -71,7 +75,7 @@ public class GameManager : Singleton<GameManager> {
 
         // Add GameManager as listener to onClick events
         board = newBoard;
-        foreach(GameObject go in board)
+        foreach (GameObject go in board)
         {
             go.GetComponent<Square>().OnClick.AddListener(SquareClicked);
         }
@@ -82,18 +86,28 @@ public class GameManager : Singleton<GameManager> {
         allOff();
     }
 
+    public int lastMoveLocation = -1;
+
     private void SquareClicked(Square square)
     {
         if (square.GetComponent<Outline>().enabled)
-        { 
-            
-            if(selectedIndex < 0){
+        {
+
+            if (selectedIndex < 0)
+            {
                 Debug.LogError("A piece has not been selected yet.  All outlines should be off.  Did you miss a call to allOff() somewhere?");
             }
 
             // Execute the moves of previously selected piece to the new square
             List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, getIndex(square));
-            foreach(ChessCommand action in actions)
+            var moveCommand = actions.Where(a => a is MoveCommand).Select(a => a as MoveCommand).LastOrDefault();
+
+            if (moveCommand != null)
+                lastMoveLocation = moveCommand.MoveTo;
+
+
+
+            foreach (ChessCommand action in actions)
             {
                 action.Execute(board);
             }
@@ -102,17 +116,18 @@ public class GameManager : Singleton<GameManager> {
             selectedIndex = -1;
             CurrentTurn = CurrentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
             TurnChanged.Invoke();
-        } else if (square.Piece != null)  
-        { 
-            
+        }
+        else if (square.Piece != null)
+        {
+
             allOff();
 
             // check turn
-            if(CurrentTurn != square.Piece.Team)
+            if (CurrentTurn != square.Piece.Team)
             {
                 // I don't know how to surround the "if" porton of this statement with a #build tag of some sort to remove for builds
-                if(EnforceTurns)
-                    return; 
+                if (EnforceTurns)
+                    return;
             }
 
             // highlight valid moves
@@ -131,7 +146,7 @@ public class GameManager : Singleton<GameManager> {
 
     private void allOff()
     {
-        foreach(GameObject go in board)
+        foreach (GameObject go in board)
         {
             go.GetComponent<Outline>().enabled = false;
         }
@@ -144,7 +159,7 @@ public class GameManager : Singleton<GameManager> {
     {
         for (int i = 0; i < board.Count; ++i)
         {
-            if(board[i].GetComponent<Square>() == square) { return i; }
+            if (board[i].GetComponent<Square>() == square) { return i; }
         }
         Debug.LogWarning("Square not found on board");
         return -1;
