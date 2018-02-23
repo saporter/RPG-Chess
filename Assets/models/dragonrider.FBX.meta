@@ -1,0 +1,155 @@
+fileFormatVersion: 2
+guid: e5e97dff9d86bf54d90d7c19e6e72e07
+timeCreated: 1519353750
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Box07
+    100002: Cone27
+    100004: Cone28
+    100006: Cylinder10
+    100008: Cylinder11
+    100010: Cylinder12
+    100012: Cylinder13
+    100014: Cylinder14
+    100016: Cylinder15
+    100018: Cylinder16
+    100020: Cylinder17
+    100022: //RootNode
+    100024: GeoSphere04
+    100026: Line04
+    400000: Box07
+    400002: Cone27
+    400004: Cone28
+    400006: Cylinder10
+    400008: Cylinder11
+    400010: Cylinder12
+    400012: Cylinder13
+    400014: Cylinder14
+    400016: Cylinder15
+    400018: Cylinder16
+    400020: Cylinder17
+    400022: //RootNode
+    400024: GeoSphere04
+    400026: Line04
+    2100000: 01 - Default
+    2300000: Box07
+    2300002: Cone27
+    2300004: Cone28
+    2300006: Cylinder10
+    2300008: Cylinder11
+    2300010: Cylinder12
+    2300012: Cylinder13
+    2300014: Cylinder14
+    2300016: Cylinder15
+    2300018: Cylinder16
+    2300020: Cylinder17
+    2300022: GeoSphere04
+    2300024: Line04
+    3300000: Box07
+    3300002: Cone27
+    3300004: Cone28
+    3300006: Cylinder10
+    3300008: Cylinder11
+    3300010: Cylinder12
+    3300012: Cylinder13
+    3300014: Cylinder14
+    3300016: Cylinder15
+    3300018: Cylinder16
+    3300020: Cylinder17
+    3300022: GeoSphere04
+    3300024: Line04
+    4300000: Line04
+    4300002: Box07
+    4300004: GeoSphere04
+    4300006: Cylinder10
+    4300008: Cylinder11
+    4300010: Cylinder12
+    4300012: Cylinder13
+    4300014: Cylinder14
+    4300016: Cylinder15
+    4300018: Cylinder16
+    4300020: Cylinder17
+    4300022: Cone27
+    4300024: Cone28
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.25
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
