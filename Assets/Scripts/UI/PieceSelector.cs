@@ -13,5 +13,6 @@ public class PieceSelector : MonoBehaviour {
     public void Selected()
     {
         GameManager.Instance.PromotionEvent.Invoke(BoardIndex, (Team == Affiliation.White ? "White" : "Black") + ChooserType);
+        Chooser.transform.position = ChooserLocation.position;
     }
 }
