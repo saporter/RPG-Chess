@@ -13,7 +13,10 @@ public class MakePieceAtSquare : MonoBehaviour {
 
     public void MakePiece()
     {
-        MakePiece(GameManager.Instance.Board, IsWhite ? WhitePiece : BlackPiece);
+        if (MakePiece(GameManager.Instance.Board, IsWhite ? WhitePiece : BlackPiece))
+        {
+            GameManager.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
+        }
         GameManager.Instance.PromotionEvent.Invoke(-1, "Off");
     }
 
@@ -31,12 +34,12 @@ public class MakePieceAtSquare : MonoBehaviour {
         IsWhite = type.Contains("White");
     }
 
-    private void MakePiece(List<GameObject> board, GameObject prefab)
+    private bool MakePiece(List<GameObject> board, GameObject prefab)
     {
         if(Location < 0)
         {
             Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  Are you sure the UI is displaying correctly?");
-            return;
+            return false;
         }
 
         if (board[Location].GetComponent<Square>().Piece != null)
@@ -52,7 +55,10 @@ public class MakePieceAtSquare : MonoBehaviour {
         if(square.Piece == null)
         {
             Debug.LogError("Prefab created does not implement interface IChessPiece");
+            return false;
         }
+
+        return true;
     }
 
     private void OnDestroy()

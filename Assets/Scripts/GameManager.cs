@@ -25,6 +25,8 @@ public class GameManager : Singleton<GameManager>
     public GameEvent TurnChanged;
     [SerializeField]
     public LocationEvent PromotionEvent;
+    [SerializeField]
+    public LocationEvent PieceAddedEvent;
 
     public Affiliation CurrentTurn;
 

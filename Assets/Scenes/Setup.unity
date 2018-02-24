@@ -508,7 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoardIndex: 30
   Team: 0
-  ChooserType: MiddleChooser
+  ChooserType: None
   Chooser: {fileID: 799429739}
   ChooserLocation: {fileID: 24783514}
 --- !u!114 &83850766
@@ -1644,6 +1644,11 @@ MonoBehaviour:
     m_TypeName: GameManager+GameEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   PromotionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: GameManager+LocationEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  PieceAddedEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: GameManager+LocationEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -3661,7 +3666,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BoardIndex: 2
   Team: 1
-  ChooserType: MiddleChooser
+  ChooserType: None
   Chooser: {fileID: 799429739}
   ChooserLocation: {fileID: 880781962}
 --- !u!114 &728544809
@@ -3802,7 +3807,7 @@ GameObject:
   - component: {fileID: 799429744}
   - component: {fileID: 799429745}
   m_Layer: 5
-  m_Name: Middle Piece Chooser (incomplete)
+  m_Name: Middle Piece Chooser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5272,7 +5277,7 @@ GameObject:
   - component: {fileID: 1242564010}
   - component: {fileID: 1242564011}
   m_Layer: 5
-  m_Name: Corner Piece Chooser (incomplete)
+  m_Name: Corner Piece Chooser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6553,6 +6558,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BoardSquares: {fileID: 1701195056085020, guid: caf2a45ce8a9d43bf8a6d4053bec12dd,
+    type: 2}
+  WhiteBoardSetup: {fileID: 2019073748}
+  BlackBoardSetup: {fileID: 1232795745}
+  WhiteKingPrefab: {fileID: 1898428656692366, guid: 53b368757d0bf6846b18791984536e2f,
+    type: 2}
+  BlackKingPrefab: {fileID: 1898428656692366, guid: a606e7b6b446d4e5abac9f9a57133318,
+    type: 2}
+  DefaultIconPrefab: {fileID: 1599264485295682, guid: bc81ef6b9d98249f39da23139a84d100,
     type: 2}
 --- !u!4 &1572437559
 Transform:
