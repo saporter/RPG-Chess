@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using cakeslice;
 using System.Linq;
 
@@ -32,6 +33,7 @@ public class GameManager : Singleton<GameManager>
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
+    private bool playing = false;
 
     // For debug and testing.  Remove for build
     private bool enforceTurns = true;
@@ -43,6 +45,23 @@ public class GameManager : Singleton<GameManager>
         {
             return board;
         }
+    }
+
+    private void Awake()
+    {
+        if(Instance != this)
+        {
+            DestroyImmediate(gameObject);
+        }
+        DontDestroyOnLoad(this);
+        playing = false;
+        SceneManager.sceneLoaded += sceneLoaded;
+    }
+
+    private void sceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        allOff();
+        Debug.Log("new scene loaded");
     }
 
     /*
@@ -58,6 +77,11 @@ public class GameManager : Singleton<GameManager>
         return 4 * y + x;
     }
 
+    public void StartGame()
+    {
+        allOff();
+        playing = true;
+    }
 
 
     /*
@@ -85,13 +109,19 @@ public class GameManager : Singleton<GameManager>
         // Start the game with White as current player
         CurrentTurn = Affiliation.White;
         selectedIndex = -1;
+        playing = false;
         allOff();
     }
+
+   
 
     public int lastMoveLocation = -1;
 
     private void SquareClicked(Square square)
     {
+        if (!playing)
+            return;
+        
         if (square.GetComponent<Outline>().enabled)
         {
 
@@ -148,6 +178,9 @@ public class GameManager : Singleton<GameManager>
 
     private void allOff()
     {
+        if (board == null)
+            return;
+        
         foreach (GameObject go in board)
         {
             go.GetComponent<Outline>().enabled = false;
@@ -165,5 +198,11 @@ public class GameManager : Singleton<GameManager>
         }
         Debug.LogWarning("Square not found on board");
         return -1;
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        SceneManager.sceneLoaded -= sceneLoaded;
     }
 }

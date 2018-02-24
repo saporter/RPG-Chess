@@ -138,6 +138,7 @@ public class TestSetup : MonoBehaviour {
         // This is how to setup up the game manager
         // --- ** ----
         gameManager.ResetBoard(board);
+        gameManager.StartGame();
 	}
 	
 }

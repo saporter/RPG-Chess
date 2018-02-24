@@ -50,6 +50,7 @@ public class MakePieceAtSquare : MonoBehaviour {
         GameObject piece = Instantiate(prefab);
         Square square = board[Location].GetComponent<Square>();
         piece.transform.position = square.transform.position;
+        piece.transform.SetParent(square.transform.parent);
         square.Piece = piece.GetComponent<IChessPiece>();
 
         if(square.Piece == null)
