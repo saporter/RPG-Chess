@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54283865837648674}
   - component: {fileID: 65322593055541276}
   - component: {fileID: 114506225253769634}
+  - component: {fileID: 114473155866697406}
   m_Layer: 2
   m_Name: pawn_black
   m_TagString: white
@@ -112,6 +113,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6617413, y: 1.1501522, z: 0.6617413}
   m_Center: {x: -0.00073182577, y: 0.5764904, z: 0.0000000745058}
+--- !u!114 &114473155866697406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572097457183788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: ffb10fd3d144d466eb0119dd0d98ae22,
+    type: 2}
 --- !u!114 &114506225253769634
 MonoBehaviour:
   m_ObjectHideFlags: 1

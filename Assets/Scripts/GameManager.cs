@@ -53,7 +53,7 @@ public class GameManager : Singleton<GameManager>
         {
             DestroyImmediate(gameObject);
         }
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
         playing = false;
         SceneManager.sceneLoaded += sceneLoaded;
     }
@@ -61,7 +61,9 @@ public class GameManager : Singleton<GameManager>
     private void sceneLoaded(Scene scene, LoadSceneMode mode)
     {
         allOff();
-        Debug.Log("new scene loaded");
+        GameObject directionalLight = GameObject.Find("Directional Light");
+        directionalLight.GetComponent<Light>().enabled = false;
+        directionalLight.GetComponent<Light>().enabled = true;
     }
 
     /*
