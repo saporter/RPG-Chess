@@ -44,12 +44,23 @@ public class Setup : MonoBehaviour {
         GameObject slot = type.Contains("White") ? WhiteSlots.GetSlot(location) : BlackSlots.GetSlot(location);
         if(slot != null)
         {
-            if(slot.transform.childCount > 0)
+            var Piece = GameManager.Instance.Board[location].GetComponent<Square>().Piece;
+            GameObject iconPrefab = DefaultIconPrefab;
+
+            if (Piece.gameObject.GetComponent<IconUI>() != null)
             {
-                slot.DestroyChildren();
+                if(Piece.gameObject.GetComponent<IconUI>().ImagePrefab == null)
+                {
+                    Debug.LogWarning("IconUI component found on Chess Piece but Image Prefab is null");
+                }
+                else
+                {
+                    iconPrefab = Piece.gameObject.GetComponent<IconUI>().ImagePrefab;
+                }
             }
-            GameObject icon = Instantiate(DefaultIconPrefab);
-            icon.transform.SetParent(slot.transform);
+
+            slot.DestroyChildren();
+            Instantiate(iconPrefab).transform.SetParent(slot.transform);
         }
     }
 

@@ -6565,7 +6565,7 @@ MonoBehaviour:
     type: 2}
   BlackKingPrefab: {fileID: 1898428656692366, guid: a606e7b6b446d4e5abac9f9a57133318,
     type: 2}
-  DefaultIconPrefab: {fileID: 1599264485295682, guid: bc81ef6b9d98249f39da23139a84d100,
+  DefaultIconPrefab: {fileID: 1826817160698532, guid: 7ddc6e21912004b5692fe068585e8190,
     type: 2}
 --- !u!4 &1572437559
 Transform:

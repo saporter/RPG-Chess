@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54652662201463210}
   - component: {fileID: 65784579318180472}
   - component: {fileID: 114563698108198878}
+  - component: {fileID: 114791149370968230}
   m_Layer: 2
   m_Name: king_black
   m_TagString: white
@@ -139,3 +140,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+--- !u!114 &114791149370968230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898428656692366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: 5d6bf2b1272de4851a5aebae574cc7e9,
+    type: 2}
