@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
     private bool playing = false;
+    private bool manualDestroy = false;
 
     // For debug and testing.  Remove for build
     private bool enforceTurns = true;
@@ -51,7 +52,9 @@ public class GameManager : Singleton<GameManager>
     {
         if(Instance != this)
         {
+            manualDestroy = true;       // Do not call Singleton OnDestroy()
             DestroyImmediate(gameObject);
+            return;
         }
         DontDestroyOnLoad(gameObject);
         playing = false;
@@ -96,6 +99,10 @@ public class GameManager : Singleton<GameManager>
         {
             foreach (GameObject go in board)
             {
+                if (go.GetComponent<Square>().Piece != null)
+                {
+                    Destroy(go.GetComponent<Square>().Piece.gameObject);
+                }
                 Destroy(go);
             }
             board.Clear();
@@ -204,7 +211,8 @@ public class GameManager : Singleton<GameManager>
 
     public override void OnDestroy()
     {
-        base.OnDestroy();
+        if(!manualDestroy)
+            base.OnDestroy();
         SceneManager.sceneLoaded -= sceneLoaded;
     }
 }

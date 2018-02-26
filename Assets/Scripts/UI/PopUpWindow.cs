@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*
  * Show and hides a UI GameObject with a CanvasGroup
@@ -14,6 +15,14 @@ public class PopUpWindow : MonoBehaviour {
     {
         GameManager.Instance.PromotionEvent.AddListener(popUpListener);
         toggleCanvasGroup(0f, false, false);
+
+        // I hate this but it solves an unusual bug in the editor whenever the scene is reloaded
+        var mask = transform.GetComponentInChildren<Mask>();
+        if(mask != null)
+        {
+            mask.gameObject.SetActive(false);
+            mask.gameObject.SetActive(true);
+        }
 	}
 
     private void popUpListener(int location, string type)
