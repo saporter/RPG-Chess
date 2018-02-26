@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MoveCommand : ChessCommand {
     private IChessPiece movingPiece;
+    public int MoveFrom { get { return moveFrom; } }
     private int moveFrom;
+    public int MoveTo { get { return moveTo; } }
     private int moveTo;
 
     public MoveCommand(IChessPiece piece, int from, int to)
