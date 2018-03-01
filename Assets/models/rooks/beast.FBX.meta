@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: cca3d84a203caf94abca9c90af6abf3c
-timeCreated: 1519626675
+guid: 44da2ea6530f1664f96e97c714428fa0
+timeCreated: 1519880674
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: 'Material #2'
+    2100000: No Name
     2300000: //RootNode
     3300000: //RootNode
-    4300000: minister
+    4300000: Beast
   externalObjects: {}
   materials:
     importMaterials: 1
