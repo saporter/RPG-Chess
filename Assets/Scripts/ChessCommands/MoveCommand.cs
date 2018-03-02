@@ -8,12 +8,19 @@ public class MoveCommand : ChessCommand {
     private int moveFrom;
     public int MoveTo { get { return moveTo; } }
     private int moveTo;
+    private AudioForPieces audioForPieces;
 
     public MoveCommand(IChessPiece piece, int from, int to)
     {
         movingPiece = piece;
         moveFrom = from;
         moveTo = to;
+
+        audioForPieces = piece.gameObject.GetComponent<AudioForPieces>();
+        if (audioForPieces)
+            audioForPieces.SE_Move();
+        
+        
     }
 
     public override void Execute(List<GameObject> board)

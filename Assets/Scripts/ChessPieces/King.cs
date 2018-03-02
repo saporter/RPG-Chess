@@ -6,6 +6,13 @@ public class King : MonoBehaviour, IChessPiece {
     [SerializeField]
     Affiliation team;
 
+    private AudioForPieces audioPlayer;
+
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioForPieces>();
+    }
+
     public Affiliation Team
     {
         get
@@ -96,6 +103,7 @@ public class King : MonoBehaviour, IChessPiece {
             }
         }
 
+        audioPlayer.SE_PickUp();
         return validMoves;
     }
 
@@ -106,6 +114,7 @@ public class King : MonoBehaviour, IChessPiece {
         if (board[to].GetComponent<Square>().Piece != null)
         {
             moves.Add(new CaptureCommand(to));
+            audioPlayer.SE_Capture();
         }
         moves.Add(new MoveCommand(this, from, to));
 
