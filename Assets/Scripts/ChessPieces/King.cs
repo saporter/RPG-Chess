@@ -31,7 +31,7 @@ public class King : MonoBehaviour, IChessPiece {
         if (x != 0)
         {
             // Left
-            index = GameManager.Instance.GetBoardIndex(x - 1, y);
+            index = Library.GetBoardIndex(x - 1, y);
             if (emptyOrOpponent(board, index))
             {
                 validMoves.Add(index);
@@ -40,7 +40,7 @@ public class King : MonoBehaviour, IChessPiece {
             // Up and Left
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y - 1);
+                index = Library.GetBoardIndex(x - 1, y - 1);
                 if (emptyOrOpponent(board, index))
                 {
                     validMoves.Add(index);
@@ -49,7 +49,7 @@ public class King : MonoBehaviour, IChessPiece {
             // Down and Left
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y + 1);
+                index = Library.GetBoardIndex(x - 1, y + 1);
                 if (emptyOrOpponent(board, index))
                 {
                     validMoves.Add(index);
@@ -58,7 +58,7 @@ public class King : MonoBehaviour, IChessPiece {
         }
         if (x != 3)
         {
-            index = GameManager.Instance.GetBoardIndex(x + 1, y);
+            index = Library.GetBoardIndex(x + 1, y);
             if (emptyOrOpponent(board, index))
             {
                 validMoves.Add(index);
@@ -67,7 +67,7 @@ public class King : MonoBehaviour, IChessPiece {
             // Up and Right
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y - 1);
+                index = Library.GetBoardIndex(x + 1, y - 1);
                 if (emptyOrOpponent(board, index))
                 {
                     validMoves.Add(index);
@@ -77,7 +77,7 @@ public class King : MonoBehaviour, IChessPiece {
             // Down and Right
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y + 1);
+                index = Library.GetBoardIndex(x + 1, y + 1);
                 if (emptyOrOpponent(board, index))
                 {
                     validMoves.Add(index);
@@ -87,7 +87,7 @@ public class King : MonoBehaviour, IChessPiece {
         if (y != 0)
         {
             // Up
-            index = GameManager.Instance.GetBoardIndex(x, y - 1);
+            index = Library.GetBoardIndex(x, y - 1);
             if (emptyOrOpponent(board, index))
             {
                 validMoves.Add(index);
@@ -96,7 +96,7 @@ public class King : MonoBehaviour, IChessPiece {
         if (y != 7)
         {
             // Down
-            index = GameManager.Instance.GetBoardIndex(x, y + 1);
+            index = Library.GetBoardIndex(x, y + 1);
             if (emptyOrOpponent(board, index))
             {
                 validMoves.Add(index);

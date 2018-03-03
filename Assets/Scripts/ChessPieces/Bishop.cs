@@ -34,13 +34,13 @@ public class Bishop : MonoBehaviour, IChessPiece {
             x = currentPos % 4;
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y - 1);
+                index = Library.GetBoardIndex(x - 1, y - 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x--;
                     y--;
-                    index = GameManager.Instance.GetBoardIndex(x - 1, y - 1);
+                    index = Library.GetBoardIndex(x - 1, y - 1);
                 }
                 if (opponent(board, index))
                 {
@@ -53,13 +53,13 @@ public class Bishop : MonoBehaviour, IChessPiece {
             y = currentPos / 4;
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y + 1);
+                index = Library.GetBoardIndex(x - 1, y + 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x--;
                     y++;
-                    index = GameManager.Instance.GetBoardIndex(x - 1, y + 1);
+                    index = Library.GetBoardIndex(x - 1, y + 1);
                 }
                 if (opponent(board, index))
                 {
@@ -77,13 +77,13 @@ public class Bishop : MonoBehaviour, IChessPiece {
             x = currentPos % 4;
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y - 1);
+                index = Library.GetBoardIndex(x + 1, y - 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x++;
                     y--;
-                    index = GameManager.Instance.GetBoardIndex(x + 1, y - 1);
+                    index = Library.GetBoardIndex(x + 1, y - 1);
                 }
                 if (opponent(board, index))
                 {
@@ -96,13 +96,13 @@ public class Bishop : MonoBehaviour, IChessPiece {
             y = currentPos / 4;
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y + 1);
+                index = Library.GetBoardIndex(x + 1, y + 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x++;
                     y++;
-                    index = GameManager.Instance.GetBoardIndex(x + 1, y + 1);
+                    index = Library.GetBoardIndex(x + 1, y + 1);
                 }
                 if (opponent(board, index))
                 {

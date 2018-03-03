@@ -69,18 +69,13 @@ public class GameManager : Singleton<GameManager>
         directionalLight.GetComponent<Light>().enabled = true;
     }
 
-    /*
-     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
-     * Static so that it can be used by Chess Piece implementations for convenience
-     */
-    public int GetBoardIndex(int x, int y)
-    {
-        if (x < 0 || x > 3 || y < 0 || y > 7)
-        {
-            return -1;
-        }
-        return 4 * y + x;
-    }
+    ///*
+    // * Look in Library class for this helper method
+    // */
+    //public int GetBoardIndex(int x, int y)
+    //{
+    //    return 0;
+    //}
 
     public void StartGame()
     {
