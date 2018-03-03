@@ -6,12 +6,19 @@ public class Bishop : MonoBehaviour, IChessPiece {
     [SerializeField]
     Affiliation team;
 
+    private AudioForPieces audioPlayer;
+
     public Affiliation Team
     {
         get
         {
             return team;
         }
+    }
+
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioForPieces>();
     }
 
     public List<int> AvailableMoves(List<GameObject> board, int currentPos)
@@ -104,6 +111,8 @@ public class Bishop : MonoBehaviour, IChessPiece {
             }
         }
 
+        audioPlayer.SE_PickUp();
+
         return validMoves;
     }
 
@@ -114,6 +123,7 @@ public class Bishop : MonoBehaviour, IChessPiece {
         if (board[to].GetComponent<Square>().Piece != null)
         {
             moves.Add(new CaptureCommand(to));
+            audioPlayer.SE_Capture();
         }
         moves.Add(new MoveCommand(this, from, to));
 

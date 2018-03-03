@@ -9,6 +9,12 @@ public class Rook : MonoBehaviour, IChessPiece
     [SerializeField]
     Affiliation team; // White is at the bottom of the screen.  Black on top.
 
+    private AudioForPieces audioPlayer;
+
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioForPieces>();
+    }
 
     public Affiliation Team
     {
@@ -36,6 +42,7 @@ public class Rook : MonoBehaviour, IChessPiece
             }
         }
 
+        audioPlayer.SE_PickUp();
         return toReturn;
 
     }
@@ -63,6 +70,7 @@ public class Rook : MonoBehaviour, IChessPiece
         if (board[to].GetComponent<Square>().Piece != null)
         {
             moves.Add(new CaptureCommand(to));
+            audioPlayer.SE_Capture();
         }
 
         moves.Add(new MoveCommand(this, from, to));
@@ -75,15 +83,5 @@ public class Rook : MonoBehaviour, IChessPiece
         throw new System.NotImplementedException();
     }
 
-    // Use this for initialization
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

@@ -7,6 +7,13 @@ public class Knight : MonoBehaviour, IChessPiece
     [SerializeField]
     Affiliation team;
 
+    private AudioForPieces audioPlayer;
+
+    void Start()
+    {
+        audioPlayer = GetComponent<AudioForPieces>();
+    }
+
     public Affiliation Team
     {
         get
@@ -54,6 +61,7 @@ public class Knight : MonoBehaviour, IChessPiece
             validMoves.Add(GameManager.Instance.GetBoardIndex(x - 2, y - 1));
         }
 
+        audioPlayer.SE_PickUp();
         return validMoves;
     }
 
@@ -64,6 +72,7 @@ public class Knight : MonoBehaviour, IChessPiece
         if (board[to].GetComponent<Square>().Piece != null)
         {
             moves.Add(new CaptureCommand(to));
+            audioPlayer.SE_Capture();
         }
         moves.Add(new MoveCommand(this, from, to));
 

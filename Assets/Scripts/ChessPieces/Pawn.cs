@@ -10,7 +10,8 @@ public class Pawn : MonoBehaviour, IChessPiece {
     private bool startingPosition = true;
     private int enPassant = 0;    // If greater than zero, an En Passant is possible
     private int passantBoardIndex = -1; // where this En Passant can occur
-    private int direction; 
+    private int direction;
+    private AudioForPieces audioPlayer;
 
     [SerializeField]
     Affiliation team; // White is at the bottom of the screen.  Black on top.  This is important for movement
@@ -26,6 +27,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
     void Start()
     {
         direction = team == Affiliation.White ? -1 : 1;
+        audioPlayer = GetComponent<AudioForPieces>();
     }
 
     /*
@@ -37,6 +39,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         int x = currentPos % 4;
         int y = currentPos / 4;
         List<int> validMoves = new List<int>();
+        audioPlayer.SE_PickUp();
 
         // Movement logic
         if(y + direction <= 7 && y + direction >= 0)
@@ -103,9 +106,11 @@ public class Pawn : MonoBehaviour, IChessPiece {
 
         if(board[to].GetComponent<Square>().Piece != null)
         {
+            audioPlayer.SE_Capture();
             moves.Add(new CaptureCommand(to));
         }else if(to == passantBoardIndex)
         {
+            audioPlayer.SE_Capture();
             moves.Add(new CaptureCommand(passantBoardIndex - 4 * direction));
         }
         moves.Add(new MoveCommand(this, from, to));
@@ -173,4 +178,5 @@ public class Pawn : MonoBehaviour, IChessPiece {
             GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
         }
     }
+
 }
