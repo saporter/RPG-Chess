@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114163569785818776}
   - component: {fileID: 114889044849567870}
   - component: {fileID: 114995343779063396}
+  - component: {fileID: 114662155223278056}
   m_Layer: 5
   m_Name: Minirook Button
   m_TagString: Untagged
@@ -107,6 +108,38 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Mini-Rook (3)
+--- !u!114 &114662155223278056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1377093362477756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 224
+    i1: 109
+    i2: 116
+    i3: 169
+    i4: 36
+    i5: 151
+    i6: 36
+    i7: 58
+    i8: 73
+    i9: 218
+    i10: 214
+    i11: 100
+    i12: 53
+    i13: 104
+    i14: 198
+    i15: 244
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114889044849567870
 MonoBehaviour:
   m_ObjectHideFlags: 1

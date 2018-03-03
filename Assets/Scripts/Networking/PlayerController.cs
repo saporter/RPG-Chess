@@ -25,18 +25,18 @@ public class PlayerController : NetworkBehaviour {
         GameManager.Instance.LocalPlayer = this;
     }
 
-    [Command]
-    public void CmdMakePiece()
-    {
-        RpcMakePiece();
-    }
+    //[Command]
+    //public void CmdMakePiece()
+    //{
+    //    RpcMakePiece();
+    //}
 
-    [ClientRpc]
-    void RpcMakePiece()
-    {
-        if(!isLocalPlayer)
-        {
-            return;
-        }
-    }
+    //[ClientRpc]
+    //void RpcMakePiece()
+    //{
+    //    if(!isLocalPlayer)
+    //    {
+    //        return;
+    //    }
+    //}
 }

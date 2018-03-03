@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114415226571889082}
   - component: {fileID: 114975151362818898}
   - component: {fileID: 114781680778485024}
+  - component: {fileID: 114927422884847408}
   m_Layer: 5
   m_Name: King Button
   m_TagString: Untagged
@@ -122,6 +123,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WhitePiece: {fileID: 1898428656692366, guid: 53b368757d0bf6846b18791984536e2f, type: 2}
   BlackPiece: {fileID: 1898428656692366, guid: a606e7b6b446d4e5abac9f9a57133318, type: 2}
+--- !u!114 &114927422884847408
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088959847624130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 250
+    i1: 21
+    i2: 185
+    i3: 244
+    i4: 46
+    i5: 104
+    i6: 196
+    i7: 143
+    i8: 216
+    i9: 137
+    i10: 227
+    i11: 8
+    i12: 110
+    i13: 137
+    i14: 80
+    i15: 244
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114975151362818898
 MonoBehaviour:
   m_ObjectHideFlags: 1

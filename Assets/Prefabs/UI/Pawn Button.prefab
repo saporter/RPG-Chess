@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114667326617463404}
   - component: {fileID: 114619169109174576}
   - component: {fileID: 114714090702219504}
+  - component: {fileID: 114057088303759638}
   m_Layer: 5
   m_Name: Pawn Button
   m_TagString: Untagged
@@ -47,6 +48,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114057088303759638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1459296678273752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 145
+    i1: 167
+    i2: 105
+    i3: 66
+    i4: 215
+    i5: 157
+    i6: 20
+    i7: 66
+    i8: 219
+    i9: 154
+    i10: 104
+    i11: 106
+    i12: 73
+    i13: 53
+    i14: 233
+    i15: 195
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114428980904207452
 MonoBehaviour:
   m_ObjectHideFlags: 1

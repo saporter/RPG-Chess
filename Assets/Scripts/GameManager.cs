@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using cakeslice;
 
 /*
@@ -64,9 +65,7 @@ public class GameManager : Singleton<GameManager>
     private void sceneLoaded(Scene scene, LoadSceneMode mode)
     {
         allOff();
-        GameObject directionalLight = GameObject.Find("Directional Light");
-        directionalLight.GetComponent<Light>().enabled = false;
-        directionalLight.GetComponent<Light>().enabled = true;
+        NetworkServer.SpawnObjects();
     }
 
     ///*

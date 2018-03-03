@@ -1,23 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class MakePieceAtSquare : MonoBehaviour {
+public class MakePieceAtSquare : NetworkBehaviour {
     [SerializeField]
     GameObject WhitePiece;
     [SerializeField]
     GameObject BlackPiece;
 
+    [SyncVar]
     private int Location = -1;
+    [SyncVar]
     private bool IsWhite;
 
     public void MakePiece()
     {
-        if (MakePiece(GameManager.Instance.Board, IsWhite ? WhitePiece : BlackPiece))
-        {
-            GameManager.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
-        }
-        GameManager.Instance.PromotionEvent.Invoke(-1, "Off");
+        CmdMakePiece();
+    }
+
+    [Command]
+    private void CmdMakePiece()
+    {
+        RpcMakePiece();
+        RpcPromotionEvent();
     }
 
     private void Start()
@@ -34,12 +40,16 @@ public class MakePieceAtSquare : MonoBehaviour {
         IsWhite = type.Contains("White");
     }
 
-    private bool MakePiece(List<GameObject> board, GameObject prefab)
+    [ClientRpc]
+    private void RpcMakePiece()
     {
+        List<GameObject> board = GameManager.Instance.Board;
+        GameObject prefab = IsWhite ? WhitePiece : BlackPiece;
+
         if(Location < 0)
         {
             Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  Are you sure the UI is displaying correctly?");
-            return false;
+            return;
         }
 
         if (board[Location].GetComponent<Square>().Piece != null)
@@ -56,10 +66,16 @@ public class MakePieceAtSquare : MonoBehaviour {
         if(square.Piece == null)
         {
             Debug.LogError("Prefab created does not implement interface IChessPiece");
-            return false;
+            return;
         }
 
-        return true;
+        GameManager.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
+    }
+
+    [ClientRpc]
+    private void RpcPromotionEvent()
+    {
+        GameManager.Instance.PromotionEvent.Invoke(-1, "Off");
     }
 
     private void OnDestroy()

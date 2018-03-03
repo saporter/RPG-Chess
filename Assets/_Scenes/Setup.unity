@@ -1655,6 +1655,7 @@ MonoBehaviour:
     m_TypeName: GameManager+LocationEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   CurrentTurn: 0
+  LocalPlayer: {fileID: 0}
 --- !u!4 &287238847
 Transform:
   m_ObjectHideFlags: 0
