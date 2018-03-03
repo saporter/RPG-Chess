@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     public LocationEvent PieceAddedEvent;
 
     public Affiliation CurrentTurn;
+    public PlayerController LocalPlayer;
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move

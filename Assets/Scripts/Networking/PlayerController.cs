@@ -1,16 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
+    [SerializeField]
+    Affiliation Team;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Awake() {
+        DontDestroyOnLoad(gameObject);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public override void OnStartLocalPlayer()
+    {
+        // sloppy way to assign player side
+        if(isServer)
+        {
+            Team = Affiliation.White;
+        }else{
+            Team = Affiliation.Black;
+        }
+
+        GameManager.Instance.LocalPlayer = this;
+    }
+
+    [Command]
+    public void CmdMakePiece()
+    {
+        RpcMakePiece();
+    }
+
+    [ClientRpc]
+    void RpcMakePiece()
+    {
+        if(!isLocalPlayer)
+        {
+            return;
+        }
+    }
 }
