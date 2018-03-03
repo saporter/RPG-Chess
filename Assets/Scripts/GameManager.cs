@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using cakeslice;
-using System.Linq;
 
 /*
  * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
@@ -117,9 +116,6 @@ public class GameManager : Singleton<GameManager>
         allOff();
     }
 
-   
-
-    public int lastMoveLocation = -1;
 
     private void SquareClicked(Square square)
     {
@@ -136,12 +132,6 @@ public class GameManager : Singleton<GameManager>
 
             // Execute the moves of previously selected piece to the new square
             List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, getIndex(square));
-            var moveCommand = actions.Where(a => a is MoveCommand).Select(a => a as MoveCommand).LastOrDefault();
-
-            if (moveCommand != null)
-                lastMoveLocation = moveCommand.MoveTo;
-
-
 
             foreach (ChessCommand action in actions)
             {
