@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class GameEventSystem : Singleton<GameEventSystem> {
+    private bool manualDestroy = false;
+
+    private void Awake()
+    {
+        if (Instance != this)
+        {
+            manualDestroy = true;       // Do not call Singleton OnDestroy()
+            DestroyImmediate(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Event system options
+    [System.Serializable]
+    public class GameEvent : UnityEvent { }             // An event that does not require arguments
+    [System.Serializable]
+    public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
+
+    [SerializeField]
+    public GameEvent TurnChanged;
+    [SerializeField]
+    public LocationEvent PromotionEvent;
+    [SerializeField]
+    public LocationEvent PieceAddedEvent;
+
+    public override void OnDestroy()
+    {
+        if (!manualDestroy)
+            base.OnDestroy();
+    }
+}

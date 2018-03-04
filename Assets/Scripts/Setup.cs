@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using cakeslice;
 
-public class Setup : MonoBehaviour {
+public class Setup : NetworkBehaviour {
     public GameObject BoardSquares;
     public GameObject WhiteBoardSetup;
     public GameObject BlackBoardSetup;

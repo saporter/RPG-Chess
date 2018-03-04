@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using cakeslice;
@@ -12,22 +11,11 @@ using cakeslice;
  * 
  * GameManager is a Singleton.  To access instance, call GameManager.Instance - see TestPiece.cs for an example
  * */
-public class GameManager : Singleton<GameManager>
+public class GameManager : NetworkSingleton
 {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
-    // Event system options
-    [System.Serializable]
-    public class GameEvent : UnityEvent { }             // An event that does not require arguments
-    [System.Serializable]
-    public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
 
-    [SerializeField]
-    public GameEvent TurnChanged;
-    [SerializeField]
-    public LocationEvent PromotionEvent;
-    [SerializeField]
-    public LocationEvent PieceAddedEvent;
 
     public Affiliation CurrentTurn;
     public PlayerController LocalPlayer;
@@ -116,12 +104,24 @@ public class GameManager : Singleton<GameManager>
         allOff();
     }
 
-
     private void SquareClicked(Square square)
+    {
+        CmdSquareClicked(getIndex(square));
+    }
+
+    [Command]
+    private void CmdSquareClicked(int squareIndex)
+    {
+        RpcSquareClicked(squareIndex);
+    }
+
+    [ClientRpc]
+    private void RpcSquareClicked(int squareIndex)
     {
         if (!playing)
             return;
-        
+        Square square = board[squareIndex].GetComponent<Square>();
+
         if (square.GetComponent<Outline>().enabled)
         {
 
@@ -131,7 +131,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // Execute the moves of previously selected piece to the new square
-            List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, getIndex(square));
+            List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, squareIndex);
 
             foreach (ChessCommand action in actions)
             {
@@ -157,7 +157,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // highlight valid moves
-            selectedIndex = getIndex(square);
+            selectedIndex = squareIndex;
             List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)
             {
