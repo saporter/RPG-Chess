@@ -13,7 +13,7 @@ public class PopUpWindow : MonoBehaviour {
 	// Use this for initialization
 	private void Start () 
     {
-        GameManager.Instance.PromotionEvent.AddListener(popUpListener);
+        GameEventSystem.Instance.PromotionEvent.AddListener(popUpListener);
         toggleCanvasGroup(0f, false, false);
 
         // I hate this but it solves an unusual bug in the editor whenever the scene is reloaded
@@ -58,9 +58,9 @@ public class PopUpWindow : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(popUpListener);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(popUpListener);  // A good habit to get into
         }
     }
 }

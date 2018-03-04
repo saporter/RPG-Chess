@@ -28,9 +28,9 @@ public class MakePieceAtSquare : NetworkBehaviour {
 
     private void Start()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.AddListener(promotedLocation);
+            GameEventSystem.Instance.PromotionEvent.AddListener(promotedLocation);
         }
     }
 
@@ -69,20 +69,20 @@ public class MakePieceAtSquare : NetworkBehaviour {
             return;
         }
 
-        GameManager.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
+        GameEventSystem.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
     }
 
     [ClientRpc]
     private void RpcPromotionEvent()
     {
-        GameManager.Instance.PromotionEvent.Invoke(-1, "Off");
+        GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
     }
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(promotedLocation);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(promotedLocation);  // A good habit to get into
         }
     }
 }

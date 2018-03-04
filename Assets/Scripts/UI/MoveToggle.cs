@@ -12,7 +12,7 @@ public class MoveToggle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GameManager.Instance.TurnChanged.AddListener(turnChange);
+        GameEventSystem.Instance.TurnChanged.AddListener(turnChange);
         turnChange();
 
 	}

@@ -15,8 +15,6 @@ public class GameManager : NetworkSingleton
 {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
-
-
     public Affiliation CurrentTurn;
     public PlayerController LocalPlayer;
 
@@ -141,7 +139,7 @@ public class GameManager : NetworkSingleton
             // Change turns
             selectedIndex = -1;
             CurrentTurn = CurrentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
-            TurnChanged.Invoke();
+            GameEventSystem.Instance.TurnChanged.Invoke();
         }
         else if (square.Piece != null)
         {

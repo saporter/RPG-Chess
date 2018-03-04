@@ -158,7 +158,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
     {
         enPassant = 2; // 2 to count first oponent move, then my own
         passantBoardIndex = atLocation;
-        GameManager.Instance.TurnChanged.AddListener(enPassantTurnCounter);
+        GameEventSystem.Instance.TurnChanged.AddListener(enPassantTurnCounter);
     }
 
     private void enPassantTurnCounter()
@@ -167,15 +167,15 @@ public class Pawn : MonoBehaviour, IChessPiece {
         if(enPassant <= 0)
         {
             passantBoardIndex = -1;
-            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
+            GameEventSystem.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
         }
     }
 
     private void OnDestroy()
     {
-        if(GameManager.Instance != null)
+        if(GameEventSystem.Instance != null)
         {
-            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
+            GameEventSystem.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
         }
     }
 

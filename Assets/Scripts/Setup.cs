@@ -58,7 +58,7 @@ public class Setup : NetworkBehaviour {
 
         // Setup board in GameManager and listen for pieces added
         GameManager.Instance.ResetBoard(board);
-        GameManager.Instance.PieceAddedEvent.AddListener(pieceAdded);
+        GameEventSystem.Instance.PieceAddedEvent.AddListener(pieceAdded);
         squares.transform.SetParent(GameManager.Instance.transform);
 
         // Some slot UI references and setup
@@ -134,9 +134,9 @@ public class Setup : NetworkBehaviour {
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(pieceAdded);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(pieceAdded);  // A good habit to get into
         }
     }
 }
