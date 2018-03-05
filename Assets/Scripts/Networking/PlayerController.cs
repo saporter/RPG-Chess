@@ -26,6 +26,8 @@ public class PlayerController : NetworkBehaviour {
         GameEventSystem.Instance.SelectedPieceEvent.AddListener(MakePiece);
         GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
         GameEventSystem.Instance.LoadNewSceneEvent.AddListener(LoadScene);
+
+        //GameObject.Find("Setup").GetComponent<Setup>().BeginSetup();
     }
 
     void MakePiece(GameObject PieceMaker)

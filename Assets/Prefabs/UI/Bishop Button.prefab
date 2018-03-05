@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114553752376225276}
   - component: {fileID: 114444911851142718}
   - component: {fileID: 114107776866202358}
-  - component: {fileID: 114520552184175862}
   m_Layer: 5
   m_Name: Bishop Button
   m_TagString: Untagged
@@ -146,38 +145,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114520552184175862
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565923020269150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 104
-    i1: 39
-    i2: 220
-    i3: 198
-    i4: 246
-    i5: 39
-    i6: 100
-    i7: 226
-    i8: 73
-    i9: 162
-    i10: 87
-    i11: 228
-    i12: 212
-    i13: 208
-    i14: 46
-    i15: 193
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114553752376225276
 MonoBehaviour:
   m_ObjectHideFlags: 1

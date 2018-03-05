@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114661857689212618}
   - component: {fileID: 114939764792812406}
   - component: {fileID: 114738335578276532}
-  - component: {fileID: 114383262864705352}
   m_Layer: 5
   m_Name: Bomber Button (temp)
   m_TagString: Untagged
@@ -81,38 +80,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Bomber (4)
---- !u!114 &114383262864705352
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709979436460474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 76
-    i1: 152
-    i2: 239
-    i3: 87
-    i4: 15
-    i5: 248
-    i6: 84
-    i7: 13
-    i8: 185
-    i9: 140
-    i10: 57
-    i11: 96
-    i12: 3
-    i13: 252
-    i14: 149
-    i15: 134
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114661857689212618
 MonoBehaviour:
   m_ObjectHideFlags: 1

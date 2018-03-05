@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114213424628288946}
   - component: {fileID: 114602416087652156}
   - component: {fileID: 114963231182287164}
-  - component: {fileID: 114042890806904474}
   m_Layer: 5
   m_Name: Priest Button
   m_TagString: Untagged
@@ -48,38 +47,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114042890806904474
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1304509723960832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 239
-    i1: 64
-    i2: 137
-    i3: 153
-    i4: 1
-    i5: 72
-    i6: 52
-    i7: 112
-    i8: 187
-    i9: 141
-    i10: 234
-    i11: 107
-    i12: 99
-    i13: 28
-    i14: 98
-    i15: 116
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114213424628288946
 MonoBehaviour:
   m_ObjectHideFlags: 1

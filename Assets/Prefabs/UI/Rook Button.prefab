@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114110620963521076}
   - component: {fileID: 114299235904245442}
   - component: {fileID: 114200013195571692}
-  - component: {fileID: 114352326782427534}
   m_Layer: 5
   m_Name: Rook Button
   m_TagString: Untagged
@@ -140,38 +139,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114352326782427534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1264821415139036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 125
-    i1: 56
-    i2: 155
-    i3: 209
-    i4: 124
-    i5: 3
-    i6: 68
-    i7: 38
-    i8: 106
-    i9: 26
-    i10: 202
-    i11: 213
-    i12: 155
-    i13: 135
-    i14: 47
-    i15: 138
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114856433658497670
 MonoBehaviour:
   m_ObjectHideFlags: 1

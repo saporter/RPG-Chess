@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114004702127706328}
   - component: {fileID: 114578987074312202}
   - component: {fileID: 114650943388557148}
-  - component: {fileID: 114016911395549612}
   m_Layer: 5
   m_Name: Knight Button
   m_TagString: Untagged
@@ -75,38 +74,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114016911395549612
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593789923545054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 194
-    i1: 171
-    i2: 92
-    i3: 115
-    i4: 0
-    i5: 137
-    i6: 116
-    i7: 89
-    i8: 232
-    i9: 65
-    i10: 89
-    i11: 218
-    i12: 171
-    i13: 84
-    i14: 9
-    i15: 174
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114578987074312202
 MonoBehaviour:
   m_ObjectHideFlags: 1

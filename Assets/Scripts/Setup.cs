@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using cakeslice;
 
-public class Setup : NetworkBehaviour {
+public class Setup : MonoBehaviour {
     public GameObject BoardSquares;
     public GameObject WhiteBoardSetup;
     public GameObject BlackBoardSetup;
@@ -25,8 +25,33 @@ public class Setup : NetworkBehaviour {
 
     }
 
-	// Use this for initialization
-	void Start () {
+    private void Start()
+    {
+        StartCoroutine(WaitForPlayerReady());
+        //BeginSetup();
+    }
+
+    IEnumerator WaitForPlayerReady()
+    {
+        bool flag = true;
+        while (flag)
+        {
+            foreach(UnityEngine.Networking.PlayerController player in ClientScene.localPlayers)
+            {
+                if(player.unetView.isLocalPlayer)
+                {
+                    flag = false;
+                }
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        BeginSetup();
+    }
+
+    // Use this for initialization
+    public void BeginSetup () {
+        Debug.Log("Setting up");
+
         // Create a new board and place Kings
         GameObject squares = Instantiate(BoardSquares);
         List<GameObject> board = squares.GetChildren();

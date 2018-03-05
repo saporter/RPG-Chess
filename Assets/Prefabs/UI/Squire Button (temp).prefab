@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114589952765633768}
   - component: {fileID: 114859650151571264}
   - component: {fileID: 114679076003467206}
-  - component: {fileID: 114712134730772778}
   m_Layer: 5
   m_Name: Squire Button (temp)
   m_TagString: Untagged
@@ -121,38 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WhitePiece: {fileID: 1572097457183788, guid: cb1113ba79a084f4593ae02d368eac6d, type: 2}
   BlackPiece: {fileID: 1572097457183788, guid: 9ffbf6679409c44bb9f85414b0ba1ffa, type: 2}
---- !u!114 &114712134730772778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1958702288121650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 248
-    i1: 99
-    i2: 209
-    i3: 36
-    i4: 222
-    i5: 31
-    i6: 52
-    i7: 222
-    i8: 233
-    i9: 144
-    i10: 125
-    i11: 140
-    i12: 75
-    i13: 36
-    i14: 188
-    i15: 20
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114859650151571264
 MonoBehaviour:
   m_ObjectHideFlags: 1

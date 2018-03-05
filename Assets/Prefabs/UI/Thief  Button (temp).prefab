@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114440478412112932}
   - component: {fileID: 114739203921507752}
   - component: {fileID: 114183426785577698}
-  - component: {fileID: 114926915360151054}
   m_Layer: 5
   m_Name: Thief  Button (temp)
   m_TagString: Untagged
@@ -173,38 +172,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114926915360151054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1329852597331836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 143
-    i1: 142
-    i2: 41
-    i3: 255
-    i4: 4
-    i5: 53
-    i6: 100
-    i7: 196
-    i8: 27
-    i9: 243
-    i10: 24
-    i11: 238
-    i12: 19
-    i13: 28
-    i14: 32
-    i15: 73
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!222 &222437349222369590
 CanvasRenderer:
   m_ObjectHideFlags: 1
