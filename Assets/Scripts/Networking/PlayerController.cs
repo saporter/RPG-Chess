@@ -25,6 +25,7 @@ public class PlayerController : NetworkBehaviour {
         GameManager.Instance.LocalPlayer = this;
         GameEventSystem.Instance.SelectedPieceEvent.AddListener(MakePiece);
         GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
+        GameEventSystem.Instance.LoadNewSceneEvent.AddListener(CmdLoadScene);
     }
 
     void MakePiece(GameObject PieceMaker)
@@ -64,5 +65,15 @@ public class PlayerController : NetworkBehaviour {
             GameEventSystem.Instance.SelectedPieceEvent.RemoveListener(MakePiece);
             GameEventSystem.Instance.OnClick.RemoveListener(SquareClicked);
         }
+    }
+
+    [Command]
+    private void CmdLoadScene(string sceneName)
+    {
+        if(sceneName.Contains("Setup"))
+        {
+            GameManager.Instance.ResetBoard(new List<GameObject>(0));
+        }
+        NetworkManager.singleton.ServerChangeScene(sceneName);
     }
 }

@@ -24,6 +24,8 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     [System.Serializable]
     public class GameObjectEvent : UnityEvent<GameObject> { }
     [System.Serializable]
+    public class StringEvent : UnityEvent<string> { }
+    [System.Serializable]
     public class NetworkIDEvent : UnityEvent<NetworkInstanceId> { }
     [System.Serializable]
     public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
@@ -41,6 +43,8 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     public GameObjectEvent SelectedPieceEvent;
     [SerializeField]
     public NetworkIDEvent MakePieceEvent;
+    [SerializeField]
+    public StringEvent LoadNewSceneEvent;
 
     public override void OnDestroy()
     {

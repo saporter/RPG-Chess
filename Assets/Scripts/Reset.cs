@@ -8,8 +8,6 @@ public class Reset : MonoBehaviour {
 
 	public void ReturnToSetup()
     {
-        GameManager.Instance.ResetBoard(new List<GameObject>(0));
-        //SceneManager.LoadSceneAsync("Setup");
-        NetworkManager.singleton.ServerChangeScene("Setup");
+        GameEventSystem.Instance.LoadNewSceneEvent.Invoke("Setup");
     }
 }

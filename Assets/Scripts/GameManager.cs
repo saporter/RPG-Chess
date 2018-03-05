@@ -94,7 +94,6 @@ public class GameManager : NetworkSingleton
     [ClientRpc]
     public void RpcSquareClicked(int squareIndex)
     {
-        Debug.Log("Playing set to: " + playing);
         if (!playing)
             return;
         
