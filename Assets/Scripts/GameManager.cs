@@ -11,7 +11,7 @@ using cakeslice;
  * 
  * GameManager is a Singleton.  To access instance, call GameManager.Instance - see TestPiece.cs for an example
  * */
-public class GameManager : NetworkSingleton
+public class GameManager : Singleton<GameManager>
 {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
@@ -85,8 +85,8 @@ public class GameManager : NetworkSingleton
         allOff();
     }
 
-    [ClientRpc]
-    public void RpcSquareClicked(int squareIndex)
+
+    public void SquareClicked(int squareIndex)
     {
         if (!playing)
             return;
@@ -139,12 +139,6 @@ public class GameManager : NetworkSingleton
         }
 
         allOff();
-    }
-
-    [ClientRpc]
-    public void RpcEmptyBoard()
-    {
-        ResetBoard(new List<GameObject>(0));
     }
 
     private void sceneLoaded(Scene scene, LoadSceneMode mode)

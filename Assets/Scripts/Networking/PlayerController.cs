@@ -30,20 +30,11 @@ public class PlayerController : NetworkBehaviour {
         //GameObject.Find("Setup").GetComponent<Setup>().BeginSetup();
     }
 
+    //------ Make Pieces -------
     void MakePiece(GameObject PieceMaker)
     {
         var maker = PieceMaker.GetComponent<MakePieceAtSquare>();
         CmdMakePiece(maker.name, maker.Location, maker.IsWhite);
-    }
-
-    private void SquareClicked(GameObject square)
-    {
-        CmdSquareClicked(Library.GetIndex(GameManager.Instance.Board, square.GetComponent<Square>()));
-    }
-
-    private void LoadScene(string sceneName)
-    {
-        CmdLoadScene(sceneName);
     }
 
     [Command]
@@ -52,10 +43,37 @@ public class PlayerController : NetworkBehaviour {
         RpcMakePiece(stringID, location, isWhite);
     }
 
+    [ClientRpc]
+    void RpcMakePiece(string stringID, int location, bool isWhite)
+    {
+        GameEventSystem.Instance.PromotionEvent.Invoke(location, (isWhite ? "White" : "Black") + "Network");
+        GameEventSystem.Instance.MakePieceEvent.Invoke(stringID);
+    }
+    //-------------------------------------------------------------------------------------------------------
+
+    //-------- Movement --------
+    private void SquareClicked(GameObject square)
+    {
+        CmdSquareClicked(Library.GetIndex(GameManager.Instance.Board, square.GetComponent<Square>()));
+    }
+
     [Command]
     private void CmdSquareClicked(int squareIndex)
     {
-        GameManager.Instance.RpcSquareClicked(squareIndex);
+        RpcSquareClicked(squareIndex);
+    }
+
+    [ClientRpc]
+    private void RpcSquareClicked(int squareIndex)
+    {
+        GameManager.Instance.SquareClicked(squareIndex);
+    }
+    //-------------------------------------------------------------------------------------------------------
+
+    //----- Scene Loading ------
+    private void LoadScene(string sceneName)
+    {
+        CmdLoadScene(sceneName);
     }
 
     [Command]
@@ -63,17 +81,18 @@ public class PlayerController : NetworkBehaviour {
     {
         if (sceneName.Contains("Setup"))
         {
-            GameManager.Instance.RpcEmptyBoard();
+            RpcClearBoard();
         }
         NetworkManager.singleton.ServerChangeScene(sceneName);
     }
 
     [ClientRpc]
-    void RpcMakePiece(string stringID, int location, bool isWhite)
+    private void RpcClearBoard()
     {
-        GameEventSystem.Instance.PromotionEvent.Invoke(location, (isWhite ? "White" : "Black") + "Network");
-        GameEventSystem.Instance.MakePieceEvent.Invoke(stringID);
+        GameManager.Instance.ResetBoard(new List<GameObject>(0));
     }
+    //-------------------------------------------------------------------------------------------------------
+
 
     private void OnDestroy()
     {
