@@ -9,21 +9,20 @@ public class MakePieceAtSquare : NetworkBehaviour {
     [SerializeField]
     GameObject BlackPiece;
 
+
+
     [SyncVar]
-    private int Location = -1;
+    private int location = -1;
     [SyncVar]
-    private bool IsWhite;
+    private bool isWhite;
+
+    public int Location { get { return location; } }
+    public bool IsWhite { get { return isWhite; } }
 
     public void MakePiece()
     {
-        CmdMakePiece();
-    }
-
-    [Command]
-    private void CmdMakePiece()
-    {
-        RpcMakePiece();
-        RpcPromotionEvent();
+        //this.GetComponent<NetworkIdentity>().AssignClientAuthority(GameManager.Instance.LocalPlayer.GetComponent<NetworkIdentity>().connectionToClient);
+        GameEventSystem.Instance.SelectedPieceEvent.Invoke(gameObject);
     }
 
     private void Start()
@@ -31,34 +30,40 @@ public class MakePieceAtSquare : NetworkBehaviour {
         if (GameEventSystem.Instance != null)
         {
             GameEventSystem.Instance.PromotionEvent.AddListener(promotedLocation);
+            GameEventSystem.Instance.MakePieceEvent.AddListener(MakePieceListener);
+        }
+    }
+
+    private void MakePieceListener(NetworkInstanceId originalID)
+    {
+        if (originalID.Value == netId.Value)
+        {
+            MakePiece(GameManager.Instance.Board, isWhite ? WhitePiece : BlackPiece);
+            GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
         }
     }
 
     private void promotedLocation(int atLocation, string type)
     {
-        Location = atLocation;
-        IsWhite = type.Contains("White");
+        location = atLocation;
+        isWhite = type.Contains("White");
     }
 
-    [ClientRpc]
-    private void RpcMakePiece()
+    private void MakePiece(List<GameObject> board, GameObject prefab)
     {
-        List<GameObject> board = GameManager.Instance.Board;
-        GameObject prefab = IsWhite ? WhitePiece : BlackPiece;
-
-        if(Location < 0)
+        if(location < 0)
         {
             Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  Are you sure the UI is displaying correctly?");
             return;
         }
 
-        if (board[Location].GetComponent<Square>().Piece != null)
+        if (board[location].GetComponent<Square>().Piece != null)
         {
-            Destroy(board[Location].GetComponent<Square>().Piece.gameObject);
+            Destroy(board[location].GetComponent<Square>().Piece.gameObject);
         }
 
         GameObject piece = Instantiate(prefab);
-        Square square = board[Location].GetComponent<Square>();
+        Square square = board[location].GetComponent<Square>();
         piece.transform.position = square.transform.position;
         piece.transform.SetParent(square.transform.parent);
         square.Piece = piece.GetComponent<IChessPiece>();
@@ -69,13 +74,7 @@ public class MakePieceAtSquare : NetworkBehaviour {
             return;
         }
 
-        GameEventSystem.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
-    }
-
-    [ClientRpc]
-    private void RpcPromotionEvent()
-    {
-        GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
+        GameEventSystem.Instance.PieceAddedEvent.Invoke(location, isWhite ? "White" : "Black");
     }
 
     private void OnDestroy()

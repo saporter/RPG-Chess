@@ -27,6 +27,7 @@ public class Setup : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Debug.Log("Setup Start");
         // Create a new board and place Kings
         GameObject squares = Instantiate(BoardSquares);
         List<GameObject> board = squares.GetChildren();

@@ -46,6 +46,7 @@ public class GameManager : NetworkSingleton
         DontDestroyOnLoad(gameObject);
         playing = false;
         SceneManager.sceneLoaded += sceneLoaded;
+        GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
     }
 
     private void sceneLoaded(Scene scene, LoadSceneMode mode)
@@ -88,12 +89,7 @@ public class GameManager : NetworkSingleton
             board.Clear();
         }
 
-        // Add GameManager as listener to onClick events
         board = newBoard;
-        foreach (GameObject go in board)
-        {
-            go.GetComponent<Square>().OnClick.AddListener(SquareClicked);
-        }
 
         // Start the game with White as current player
         CurrentTurn = Affiliation.White;
@@ -102,9 +98,9 @@ public class GameManager : NetworkSingleton
         allOff();
     }
 
-    private void SquareClicked(Square square)
+    private void SquareClicked(GameObject square)
     {
-        CmdSquareClicked(getIndex(square));
+        CmdSquareClicked(getIndex(square.GetComponent<Square>()));
     }
 
     [Command]
@@ -118,6 +114,8 @@ public class GameManager : NetworkSingleton
     {
         if (!playing)
             return;
+
+        Debug.Log("RpcSquareClicked");
         Square square = board[squareIndex].GetComponent<Square>();
 
         if (square.GetComponent<Outline>().enabled)
@@ -197,5 +195,9 @@ public class GameManager : NetworkSingleton
         if(!manualDestroy)
             base.OnDestroy();
         SceneManager.sceneLoaded -= sceneLoaded;
+        if (GameEventSystem.Instance != null)
+        {
+            GameEventSystem.Instance.OnClick.RemoveListener(SquareClicked);
+        }
     }
 }

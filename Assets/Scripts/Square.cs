@@ -5,10 +5,7 @@ using UnityEngine.Events;
 
 public class Square : MonoBehaviour {
     // Event system for managing clicks
-    [System.Serializable]
-    public class SquareEvent : UnityEvent<Square> {}
-    [SerializeField]
-    public SquareEvent OnClick;
+
 
     // The piece located at this square
     public IChessPiece Piece;
@@ -30,8 +27,9 @@ public class Square : MonoBehaviour {
     {
         if (listenForClick)
         {
-            OnClick.Invoke(this);
+            GameEventSystem.Instance.OnClick.Invoke(gameObject);
         }
+        Debug.Log("Mosue up");
     }
 
     private void OnDestroy()

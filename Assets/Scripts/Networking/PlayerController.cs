@@ -23,20 +23,25 @@ public class PlayerController : NetworkBehaviour {
         }
 
         GameManager.Instance.LocalPlayer = this;
+        GameEventSystem.Instance.SelectedPieceEvent.AddListener(MakePiece);
     }
 
-    //[Command]
-    //public void CmdMakePiece()
-    //{
-    //    RpcMakePiece();
-    //}
+    void MakePiece(GameObject PieceMaker)
+    {
+        var maker = PieceMaker.GetComponent<MakePieceAtSquare>();
+        CmdMakePiece(maker.netId, maker.Location, maker.IsWhite);
+    }
 
-    //[ClientRpc]
-    //void RpcMakePiece()
-    //{
-    //    if(!isLocalPlayer)
-    //    {
-    //        return;
-    //    }
-    //}
+    [Command]
+    public void CmdMakePiece(NetworkInstanceId MakerID, int location, bool isWhite)
+    {
+        RpcMakePiece(MakerID, location, isWhite);
+    }
+
+    [ClientRpc]
+    void RpcMakePiece(NetworkInstanceId MakerID, int location, bool isWhite)
+    {
+        GameEventSystem.Instance.PromotionEvent.Invoke(location, (isWhite ? "White" : "Black") + "Network");
+        GameEventSystem.Instance.MakePieceEvent.Invoke(MakerID);
+    }
 }

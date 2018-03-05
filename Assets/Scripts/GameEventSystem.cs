@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
 public class GameEventSystem : Singleton<GameEventSystem> {
     private bool manualDestroy = false;
@@ -21,7 +22,12 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     [System.Serializable]
     public class GameEvent : UnityEvent { }             // An event that does not require arguments
     [System.Serializable]
+    public class GameObjectEvent : UnityEvent<GameObject> { }
+    [System.Serializable]
+    public class NetworkIDEvent : UnityEvent<NetworkInstanceId> { }
+    [System.Serializable]
     public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
+
 
     [SerializeField]
     public GameEvent TurnChanged;
@@ -29,6 +35,12 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     public LocationEvent PromotionEvent;
     [SerializeField]
     public LocationEvent PieceAddedEvent;
+    [SerializeField]
+    public GameObjectEvent OnClick;
+    [SerializeField]
+    public GameObjectEvent SelectedPieceEvent;
+    [SerializeField]
+    public NetworkIDEvent MakePieceEvent;
 
     public override void OnDestroy()
     {
