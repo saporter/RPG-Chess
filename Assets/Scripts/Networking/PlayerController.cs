@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour {
         GameManager.Instance.LocalPlayer = this;
         GameEventSystem.Instance.SelectedPieceEvent.AddListener(MakePiece);
         GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
-        GameEventSystem.Instance.LoadNewSceneEvent.AddListener(CmdLoadScene);
+        GameEventSystem.Instance.LoadNewSceneEvent.AddListener(LoadScene);
     }
 
     void MakePiece(GameObject PieceMaker)
@@ -34,10 +34,36 @@ public class PlayerController : NetworkBehaviour {
         CmdMakePiece(maker.netId, maker.Location, maker.IsWhite);
     }
 
+    private void SquareClicked(GameObject square)
+    {
+        CmdSquareClicked(Library.GetIndex(GameManager.Instance.Board, square.GetComponent<Square>()));
+    }
+
+    private void LoadScene(string sceneName)
+    {
+        CmdLoadScene(sceneName);
+    }
+
     [Command]
     public void CmdMakePiece(NetworkInstanceId MakerID, int location, bool isWhite)
     {
         RpcMakePiece(MakerID, location, isWhite);
+    }
+
+    [Command]
+    private void CmdSquareClicked(int squareIndex)
+    {
+        GameManager.Instance.RpcSquareClicked(squareIndex);
+    }
+
+    [Command]
+    private void CmdLoadScene(string sceneName)
+    {
+        if (sceneName.Contains("Setup"))
+        {
+            GameManager.Instance.RpcEmptyBoard();
+        }
+        NetworkManager.singleton.ServerChangeScene(sceneName);
     }
 
     [ClientRpc]
@@ -47,33 +73,13 @@ public class PlayerController : NetworkBehaviour {
         GameEventSystem.Instance.MakePieceEvent.Invoke(MakerID);
     }
 
-    private void SquareClicked(GameObject square)
-    {
-        CmdSquareClicked(Library.GetIndex(GameManager.Instance.Board, square.GetComponent<Square>()));
-    }
-
-    [Command]
-    private void CmdSquareClicked(int squareIndex)
-    {
-        GameManager.Instance.RpcSquareClicked(squareIndex);
-    }
-
     private void OnDestroy()
     {
         if(GameEventSystem.Instance != null)
         {
             GameEventSystem.Instance.SelectedPieceEvent.RemoveListener(MakePiece);
             GameEventSystem.Instance.OnClick.RemoveListener(SquareClicked);
+            GameEventSystem.Instance.LoadNewSceneEvent.AddListener(CmdLoadScene);
         }
-    }
-
-    [Command]
-    private void CmdLoadScene(string sceneName)
-    {
-        if(sceneName.Contains("Setup"))
-        {
-            GameManager.Instance.ResetBoard(new List<GameObject>(0));
-        }
-        NetworkManager.singleton.ServerChangeScene(sceneName);
     }
 }

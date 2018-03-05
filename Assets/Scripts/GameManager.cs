@@ -48,12 +48,6 @@ public class GameManager : NetworkSingleton
         SceneManager.sceneLoaded += sceneLoaded;
     }
 
-    private void sceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        allOff();
-        playing = true;
-    }
-
     ///*
     // * Look in Library class for this helper method
     // */
@@ -145,6 +139,18 @@ public class GameManager : NetworkSingleton
         }
 
         allOff();
+    }
+
+    [ClientRpc]
+    public void RpcEmptyBoard()
+    {
+        ResetBoard(new List<GameObject>(0));
+    }
+
+    private void sceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        allOff();
+        playing = true;
     }
 
     private void allOff()

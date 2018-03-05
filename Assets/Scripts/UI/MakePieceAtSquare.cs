@@ -19,7 +19,6 @@ public class MakePieceAtSquare : NetworkBehaviour {
 
     public void MakePiece()
     {
-        //this.GetComponent<NetworkIdentity>().AssignClientAuthority(GameManager.Instance.LocalPlayer.GetComponent<NetworkIdentity>().connectionToClient);
         GameEventSystem.Instance.SelectedPieceEvent.Invoke(gameObject);
     }
 
