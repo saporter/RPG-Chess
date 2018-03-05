@@ -9,8 +9,6 @@ public class MakePieceAtSquare : NetworkBehaviour {
     [SerializeField]
     GameObject BlackPiece;
 
-
-
     [SyncVar]
     private int location = -1;
     [SyncVar]

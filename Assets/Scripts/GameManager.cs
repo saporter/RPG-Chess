@@ -20,7 +20,7 @@ public class GameManager : NetworkSingleton
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
-    private bool playing = false;
+    private bool playing = true;
     private bool manualDestroy = false;
 
     // For debug and testing.  Remove for build
@@ -50,9 +50,8 @@ public class GameManager : NetworkSingleton
 
     private void sceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene Loaded listener called");
         allOff();
-        NetworkServer.SpawnObjects();
+        playing = true;
     }
 
     ///*
@@ -62,12 +61,6 @@ public class GameManager : NetworkSingleton
     //{
     //    return 0;
     //}
-
-    public void StartGame()
-    {
-        allOff();
-        playing = true;
-    }
 
 
     /*
@@ -101,6 +94,7 @@ public class GameManager : NetworkSingleton
     [ClientRpc]
     public void RpcSquareClicked(int squareIndex)
     {
+        Debug.Log("Playing set to: " + playing);
         if (!playing)
             return;
         

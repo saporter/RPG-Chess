@@ -21,8 +21,9 @@ public class Setup : NetworkBehaviour {
 
     public void LoadMainLevel()
     {
-        SceneManager.LoadSceneAsync("Main");
-        GameManager.Instance.StartGame();
+        //SceneManager.LoadSceneAsync("Main");
+        NetworkManager.singleton.ServerChangeScene("Main");
+        //GameManager.Instance.StartGame();
     }
 
 	// Use this for initialization
