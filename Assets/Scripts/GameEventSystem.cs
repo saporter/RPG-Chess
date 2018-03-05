@@ -26,8 +26,6 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     [System.Serializable]
     public class StringEvent : UnityEvent<string> { }
     [System.Serializable]
-    public class IntegerEvent : UnityEvent<int> { }
-    [System.Serializable]
     public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
 
 
@@ -42,7 +40,7 @@ public class GameEventSystem : Singleton<GameEventSystem> {
     [SerializeField]
     public GameObjectEvent SelectedPieceEvent;
     [SerializeField]
-    public IntegerEvent MakePieceEvent;
+    public StringEvent MakePieceEvent;
     [SerializeField]
     public StringEvent LoadNewSceneEvent;
 

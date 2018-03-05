@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class MakePieceAtSquare : MonoIDBehaviour {
+public class MakePieceAtSquare : MonoBehaviour {
     [SerializeField]
     GameObject WhitePiece;
     [SerializeField]
@@ -29,9 +29,9 @@ public class MakePieceAtSquare : MonoIDBehaviour {
         }
     }
 
-    private void MakePieceListener(int originalID)
+    private void MakePieceListener(string stringID)
     {
-        if (originalID == ObjectID)
+        if (stringID == name)
         {
             MakePiece(GameManager.Instance.Board, isWhite ? WhitePiece : BlackPiece);
             GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
@@ -48,7 +48,9 @@ public class MakePieceAtSquare : MonoIDBehaviour {
     {
         if(location < 0)
         {
-            Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  Are you sure the UI is displaying correctly?");
+            Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  " +
+                           "Are you sure the UI is displaying correctly?" +
+                           "Does another MakePieceAtSquare UI element have the same name as this one? (add a trailing space to the other element if so)");
             return;
         }
 

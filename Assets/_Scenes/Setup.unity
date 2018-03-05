@@ -723,6 +723,10 @@ Prefab:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 1088959847624130, guid: 8a4ab32f2d68947b4aad93677d5584af, type: 2}
+      propertyPath: m_Name
+      value: 'Queen Button '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a4ab32f2d68947b4aad93677d5584af, type: 2}
   m_IsPrefabParent: 0
@@ -1397,7 +1401,7 @@ MonoBehaviour:
   MakePieceEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: GameEventSystem+IntegerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    m_TypeName: GameEventSystem+StringEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   LoadNewSceneEvent:
     m_PersistentCalls:
@@ -1640,6 +1644,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342054329770336, guid: bd1b0fbbd634446eabc49fee9b09166d, type: 2}
+      propertyPath: m_Name
+      value: 'Imp Button '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1b0fbbd634446eabc49fee9b09166d, type: 2}
@@ -3173,6 +3181,10 @@ Prefab:
       propertyPath: m_Text
       value: Rook (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1264821415139036, guid: 7d389bd17c0344266a1acad59b872f8a, type: 2}
+      propertyPath: m_Name
+      value: 'Rook Button '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d389bd17c0344266a1acad59b872f8a, type: 2}
   m_IsPrefabParent: 0
@@ -3655,6 +3667,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304509723960832, guid: ef40899901483470bb8dea6b631c6274, type: 2}
+      propertyPath: m_Name
+      value: 'Priest Button '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef40899901483470bb8dea6b631c6274, type: 2}
@@ -4533,6 +4549,10 @@ Prefab:
       propertyPath: m_Text
       value: Bishop (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1565923020269150, guid: 6827dcc6f62764e249a257e4d4d02ec1, type: 2}
+      propertyPath: m_Name
+      value: 'Bishop Button '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6827dcc6f62764e249a257e4d4d02ec1, type: 2}
   m_IsPrefabParent: 0
@@ -5295,6 +5315,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709838186357846, guid: bc36f95ef7c5143a5bb0635e51cc4312, type: 2}
+      propertyPath: m_Name
+      value: 'Cardinal Button '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc36f95ef7c5143a5bb0635e51cc4312, type: 2}
@@ -7513,6 +7537,10 @@ Prefab:
       value: 'Knight (3)
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593789923545054, guid: c2ab5c7300897459e84159daab5409ae, type: 2}
+      propertyPath: m_Name
+      value: 'Knight Button '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2ab5c7300897459e84159daab5409ae, type: 2}

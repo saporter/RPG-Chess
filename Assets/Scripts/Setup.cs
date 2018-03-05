@@ -50,8 +50,6 @@ public class Setup : MonoBehaviour {
 
     // Use this for initialization
     public void BeginSetup () {
-        Debug.Log("Setting up");
-
         // Create a new board and place Kings
         GameObject squares = Instantiate(BoardSquares);
         List<GameObject> board = squares.GetChildren();

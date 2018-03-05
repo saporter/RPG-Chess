@@ -33,7 +33,7 @@ public class PlayerController : NetworkBehaviour {
     void MakePiece(GameObject PieceMaker)
     {
         var maker = PieceMaker.GetComponent<MakePieceAtSquare>();
-        CmdMakePiece(maker.ObjectID, maker.Location, maker.IsWhite);
+        CmdMakePiece(maker.name, maker.Location, maker.IsWhite);
     }
 
     private void SquareClicked(GameObject square)
@@ -47,9 +47,9 @@ public class PlayerController : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdMakePiece(int MakerID, int location, bool isWhite)
+    public void CmdMakePiece(string stringID, int location, bool isWhite)
     {
-        RpcMakePiece(MakerID, location, isWhite);
+        RpcMakePiece(stringID, location, isWhite);
     }
 
     [Command]
@@ -69,10 +69,10 @@ public class PlayerController : NetworkBehaviour {
     }
 
     [ClientRpc]
-    void RpcMakePiece(int MakerID, int location, bool isWhite)
+    void RpcMakePiece(string stringID, int location, bool isWhite)
     {
         GameEventSystem.Instance.PromotionEvent.Invoke(location, (isWhite ? "White" : "Black") + "Network");
-        GameEventSystem.Instance.MakePieceEvent.Invoke(MakerID);
+        GameEventSystem.Instance.MakePieceEvent.Invoke(stringID);
     }
 
     private void OnDestroy()
