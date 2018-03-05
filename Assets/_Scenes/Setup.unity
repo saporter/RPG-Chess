@@ -1397,8 +1397,8 @@ MonoBehaviour:
   MakePieceEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: GameEventSystem+NetworkIDEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: GameEventSystem+IntegerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   LoadNewSceneEvent:
     m_PersistentCalls:
       m_Calls: []

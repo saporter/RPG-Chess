@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class MakePieceAtSquare : NetworkBehaviour {
+public class MakePieceAtSquare : MonoIDBehaviour {
     [SerializeField]
     GameObject WhitePiece;
     [SerializeField]
     GameObject BlackPiece;
 
-    [SyncVar]
     private int location = -1;
-    [SyncVar]
     private bool isWhite;
 
     public int Location { get { return location; } }
@@ -31,9 +29,9 @@ public class MakePieceAtSquare : NetworkBehaviour {
         }
     }
 
-    private void MakePieceListener(NetworkInstanceId originalID)
+    private void MakePieceListener(int originalID)
     {
-        if (originalID.Value == netId.Value)
+        if (originalID == ObjectID)
         {
             MakePiece(GameManager.Instance.Board, isWhite ? WhitePiece : BlackPiece);
             GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
