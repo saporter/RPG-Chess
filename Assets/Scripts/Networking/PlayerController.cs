@@ -24,6 +24,7 @@ public class PlayerController : NetworkBehaviour {
 
         GameManager.Instance.LocalPlayer = this;
         GameEventSystem.Instance.SelectedPieceEvent.AddListener(MakePiece);
+        GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
     }
 
     void MakePiece(GameObject PieceMaker)
@@ -43,5 +44,25 @@ public class PlayerController : NetworkBehaviour {
     {
         GameEventSystem.Instance.PromotionEvent.Invoke(location, (isWhite ? "White" : "Black") + "Network");
         GameEventSystem.Instance.MakePieceEvent.Invoke(MakerID);
+    }
+
+    private void SquareClicked(GameObject square)
+    {
+        CmdSquareClicked(Library.GetIndex(GameManager.Instance.Board, square.GetComponent<Square>()));
+    }
+
+    [Command]
+    private void CmdSquareClicked(int squareIndex)
+    {
+        GameManager.Instance.RpcSquareClicked(squareIndex);
+    }
+
+    private void OnDestroy()
+    {
+        if(GameEventSystem.Instance != null)
+        {
+            GameEventSystem.Instance.SelectedPieceEvent.RemoveListener(MakePiece);
+            GameEventSystem.Instance.OnClick.RemoveListener(SquareClicked);
+        }
     }
 }

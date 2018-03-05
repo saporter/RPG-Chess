@@ -29,7 +29,6 @@ public class Square : MonoBehaviour {
         {
             GameEventSystem.Instance.OnClick.Invoke(gameObject);
         }
-        Debug.Log("Mosue up");
     }
 
     private void OnDestroy()

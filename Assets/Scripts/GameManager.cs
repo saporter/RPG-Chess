@@ -46,11 +46,11 @@ public class GameManager : NetworkSingleton
         DontDestroyOnLoad(gameObject);
         playing = false;
         SceneManager.sceneLoaded += sceneLoaded;
-        GameEventSystem.Instance.OnClick.AddListener(SquareClicked);
     }
 
     private void sceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Scene Loaded listener called");
         allOff();
         NetworkServer.SpawnObjects();
     }
@@ -98,24 +98,12 @@ public class GameManager : NetworkSingleton
         allOff();
     }
 
-    private void SquareClicked(GameObject square)
-    {
-        CmdSquareClicked(getIndex(square.GetComponent<Square>()));
-    }
-
-    [Command]
-    private void CmdSquareClicked(int squareIndex)
-    {
-        RpcSquareClicked(squareIndex);
-    }
-
     [ClientRpc]
-    private void RpcSquareClicked(int squareIndex)
+    public void RpcSquareClicked(int squareIndex)
     {
         if (!playing)
             return;
-
-        Debug.Log("RpcSquareClicked");
+        
         Square square = board[squareIndex].GetComponent<Square>();
 
         if (square.GetComponent<Outline>().enabled)
@@ -177,27 +165,10 @@ public class GameManager : NetworkSingleton
         }
     }
 
-    /*
-     * Determines what index this square corresponds to
-     * */
-    private int getIndex(Square square)
-    {
-        for (int i = 0; i < board.Count; ++i)
-        {
-            if (board[i].GetComponent<Square>() == square) { return i; }
-        }
-        Debug.LogWarning("Square not found on board");
-        return -1;
-    }
-
     public override void OnDestroy()
     {
         if(!manualDestroy)
             base.OnDestroy();
         SceneManager.sceneLoaded -= sceneLoaded;
-        if (GameEventSystem.Instance != null)
-        {
-            GameEventSystem.Instance.OnClick.RemoveListener(SquareClicked);
-        }
     }
 }

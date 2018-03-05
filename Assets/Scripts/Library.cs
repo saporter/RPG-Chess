@@ -48,4 +48,17 @@ public class Library
         return 4 * y + x;
     }
 
+    /*
+     * Determines what index this square corresponds to
+     * */
+    public static int GetIndex(List<GameObject> board, Square square)
+    {
+        for (int i = 0; i < board.Count; ++i)
+        {
+            if (board[i].GetComponent<Square>() == square) { return i; }
+        }
+        Debug.LogWarning("Square not found on board");
+        return -1;
+    }
+
 }
