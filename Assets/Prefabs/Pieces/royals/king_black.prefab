@@ -221,9 +221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dacd6aec0e6b944c85756f852725146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onClickSE: {fileID: 8300000, guid: 81fb8123259cafc48939e70d4c1a0cb8, type: 3}
-  onMoveSE: {fileID: 8300000, guid: 73d070b3439db0c4bafabed58b0bfc14, type: 3}
-  onCaptureSE: {fileID: 8300000, guid: a267cd1a4fe329742afa9d703c6af15b, type: 3}
+  onClickSE: {fileID: 8300000, guid: 17f8e52692efcc746ae82b1de905f533, type: 3}
+  onMoveSE: {fileID: 8300000, guid: 784c74222dff8ee44a9fcd55d84217a5, type: 3}
+  onCaptureSE: {fileID: 8300000, guid: 9a2567d00de9179439e39cea43a7ec98, type: 3}
 --- !u!114 &114563698108198878
 MonoBehaviour:
   m_ObjectHideFlags: 1

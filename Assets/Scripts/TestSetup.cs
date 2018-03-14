@@ -44,8 +44,8 @@ public class TestSetup : MonoBehaviour {
             y = 6;
             go = Instantiate(WhitePawn);
             piece = go.GetComponent<IChessPiece>();
-            piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-            board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+            piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
         }
 
         for (int i = 0; i < 4; ++i)
@@ -54,8 +54,8 @@ public class TestSetup : MonoBehaviour {
             y = 1;
             go = Instantiate(BlackPawn);
             piece = go.GetComponent<IChessPiece>();
-            piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-            board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+            piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+            board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
         }
 
         // Kings
@@ -63,82 +63,82 @@ public class TestSetup : MonoBehaviour {
         y = 7;
         go = Instantiate(WhiteKing);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         x = 2;
         y = 0;
         go = Instantiate(BlackKing);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         // Queen
         x = 1;
         y = 7;
         go = Instantiate(WhiteQueen);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         x = 1;
         y = 0;
         go = Instantiate(BlackQueen);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         // Bishop
         x = 0;
         y = 7;
         go = Instantiate(WhiteBishop);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         x = 0;
         y = 0;
         go = Instantiate(BlackBishop);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         // Bishop
         x = 3;
         y = 7;
         go = Instantiate(WhiteRook);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         x = 3;
         y = 0;
         go = Instantiate(BlackRook);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         // Knight
         x = 3;
         y = 5;
         go = Instantiate(WhiteKnight);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
         x = 3;
         y = 2;
         go = Instantiate(BlackKnight);
         piece = go.GetComponent<IChessPiece>();
-        piece.gameObject.transform.position = board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
-        board[gameManager.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
+        piece.gameObject.transform.position = board[Library.GetBoardIndex(x, y)].GetComponent<Square>().transform.position;
+        board[Library.GetBoardIndex(x, y)].GetComponent<Square>().Piece = piece;
 
 
         // --- ** ----
         // This is how to setup up the game manager
         // --- ** ----
         gameManager.ResetBoard(board);
-        gameManager.StartGame();
+        //gameManager.StartGame();
 	}
 	
 }

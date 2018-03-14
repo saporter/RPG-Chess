@@ -31,12 +31,12 @@ public class Queen : MonoBehaviour, IChessPiece {
         if(x != 0)
         {
             // Left
-            index = GameManager.Instance.GetBoardIndex(x - 1, y);
+            index = Library.GetBoardIndex(x - 1, y);
             while(empty(board, index))
             {
                 validMoves.Add(index);
                 x--;
-                index = GameManager.Instance.GetBoardIndex(x - 1, y);
+                index = Library.GetBoardIndex(x - 1, y);
             }
             if(opponent(board, index))
             {
@@ -47,13 +47,13 @@ public class Queen : MonoBehaviour, IChessPiece {
             x = currentPos % 4;
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y - 1);
+                index = Library.GetBoardIndex(x - 1, y - 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x--;
                     y--;
-                    index = GameManager.Instance.GetBoardIndex(x - 1, y - 1);
+                    index = Library.GetBoardIndex(x - 1, y - 1);
                 }
                 if (opponent(board, index))
                 {
@@ -66,13 +66,13 @@ public class Queen : MonoBehaviour, IChessPiece {
             y = currentPos / 4;
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x - 1, y + 1);
+                index = Library.GetBoardIndex(x - 1, y + 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x--;
                     y++;
-                    index = GameManager.Instance.GetBoardIndex(x - 1, y + 1);
+                    index = Library.GetBoardIndex(x - 1, y + 1);
                 }
                 if (opponent(board, index))
                 {
@@ -86,12 +86,12 @@ public class Queen : MonoBehaviour, IChessPiece {
         if (x != 3)
         {
             // Left
-            index = GameManager.Instance.GetBoardIndex(x + 1, y);
+            index = Library.GetBoardIndex(x + 1, y);
             while (empty(board, index))
             {
                 validMoves.Add(index);
                 x++;
-                index = GameManager.Instance.GetBoardIndex(x + 1, y);
+                index = Library.GetBoardIndex(x + 1, y);
             }
             if (opponent(board, index))
             {
@@ -102,13 +102,13 @@ public class Queen : MonoBehaviour, IChessPiece {
             x = currentPos % 4;
             if (y != 0)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y - 1);
+                index = Library.GetBoardIndex(x + 1, y - 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x++;
                     y--;
-                    index = GameManager.Instance.GetBoardIndex(x + 1, y - 1);
+                    index = Library.GetBoardIndex(x + 1, y - 1);
                 }
                 if (opponent(board, index))
                 {
@@ -121,13 +121,13 @@ public class Queen : MonoBehaviour, IChessPiece {
             y = currentPos / 4;
             if (y != 7)
             {
-                index = GameManager.Instance.GetBoardIndex(x + 1, y + 1);
+                index = Library.GetBoardIndex(x + 1, y + 1);
                 while (empty(board, index))
                 {
                     validMoves.Add(index);
                     x++;
                     y++;
-                    index = GameManager.Instance.GetBoardIndex(x + 1, y + 1);
+                    index = Library.GetBoardIndex(x + 1, y + 1);
                 }
                 if (opponent(board, index))
                 {
@@ -141,12 +141,12 @@ public class Queen : MonoBehaviour, IChessPiece {
         if (y != 0)
         {
             // Up
-            index = GameManager.Instance.GetBoardIndex(x, y - 1);
+            index = Library.GetBoardIndex(x, y - 1);
             while (empty(board, index))
             {
                 validMoves.Add(index);
                 y--;
-                index = GameManager.Instance.GetBoardIndex(x, y - 1);
+                index = Library.GetBoardIndex(x, y - 1);
             }
             if (opponent(board, index))
             {
@@ -158,12 +158,12 @@ public class Queen : MonoBehaviour, IChessPiece {
         if (y != 7)
         {
             // Down
-            index = GameManager.Instance.GetBoardIndex(x, y + 1);
+            index = Library.GetBoardIndex(x, y + 1);
             while (empty(board, index))
             {
                 validMoves.Add(index);
                 y++;
-                index = GameManager.Instance.GetBoardIndex(x, y + 1);
+                index = Library.GetBoardIndex(x, y + 1);
             }
             if (opponent(board, index))
             {

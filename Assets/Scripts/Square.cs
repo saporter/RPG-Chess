@@ -5,10 +5,7 @@ using UnityEngine.Events;
 
 public class Square : MonoBehaviour {
     // Event system for managing clicks
-    [System.Serializable]
-    public class SquareEvent : UnityEvent<Square> {}
-    [SerializeField]
-    public SquareEvent OnClick;
+
 
     // The piece located at this square
     public IChessPiece Piece;
@@ -17,7 +14,7 @@ public class Square : MonoBehaviour {
 
     private void Start()
     {
-        GameManager.Instance.PromotionEvent.AddListener(pauseClicking);
+        GameEventSystem.Instance.PromotionEvent.AddListener(pauseClicking);
         listenForClick = true;
     }
 
@@ -30,15 +27,15 @@ public class Square : MonoBehaviour {
     {
         if (listenForClick)
         {
-            OnClick.Invoke(this);
+            GameEventSystem.Instance.OnClick.Invoke(gameObject);
         }
     }
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(pauseClicking);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(pauseClicking);  // A good habit to get into
         }
     }
 }

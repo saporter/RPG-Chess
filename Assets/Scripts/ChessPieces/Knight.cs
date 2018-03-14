@@ -30,35 +30,35 @@ public class Knight : MonoBehaviour, IChessPiece
 
         if(emptyOrOpponent(board, x + 1, y + 2))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x + 1, y + 2));
+            validMoves.Add(Library.GetBoardIndex(x + 1, y + 2));
         }
         if (emptyOrOpponent(board, x - 1, y + 2))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x - 1, y + 2));
+            validMoves.Add(Library.GetBoardIndex(x - 1, y + 2));
         }
         if (emptyOrOpponent(board, x + 1, y - 2))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x + 1, y - 2));
+            validMoves.Add(Library.GetBoardIndex(x + 1, y - 2));
         }
         if (emptyOrOpponent(board, x - 1, y - 2))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x - 1, y - 2));
+            validMoves.Add(Library.GetBoardIndex(x - 1, y - 2));
         }
         if (emptyOrOpponent(board, x + 2, y + 1))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x + 2, y + 1));
+            validMoves.Add(Library.GetBoardIndex(x + 2, y + 1));
         }
         if (emptyOrOpponent(board, x + 2, y - 1))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x + 2, y - 1));
+            validMoves.Add(Library.GetBoardIndex(x + 2, y - 1));
         }
         if (emptyOrOpponent(board, x - 2, y + 1))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x - 2, y + 1));
+            validMoves.Add(Library.GetBoardIndex(x - 2, y + 1));
         }
         if (emptyOrOpponent(board, x - 2, y - 1))
         {
-            validMoves.Add(GameManager.Instance.GetBoardIndex(x - 2, y - 1));
+            validMoves.Add(Library.GetBoardIndex(x - 2, y - 1));
         }
 
         audioPlayer.SE_PickUp();
@@ -86,7 +86,7 @@ public class Knight : MonoBehaviour, IChessPiece
 
     private bool emptyOrOpponent(List<GameObject> board, int x, int y)
     {
-        int index = GameManager.Instance.GetBoardIndex(x, y);
+        int index = Library.GetBoardIndex(x, y);
         if (index < 0)
             return false;
         return board[index].GetComponent<Square>().Piece == null || board[index].GetComponent<Square>().Piece.Team != team;

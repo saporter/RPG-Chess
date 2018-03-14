@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using cakeslice;
-using System.Linq;
 
 /*
  * This is GameManager is mostly built as a test environment for now to manage an 8x4 chess board.
@@ -16,24 +15,12 @@ public class GameManager : Singleton<GameManager>
 {
     protected GameManager() { } // guarantees this will always be a singleton because this prevents the use of the constructor
 
-    // Event system options
-    [System.Serializable]
-    public class GameEvent : UnityEvent { }             // An event that does not require arguments
-    [System.Serializable]
-    public class LocationEvent : UnityEvent<int, string> { }    // An event that occurs at a specific location on the board
-
-    [SerializeField]
-    public GameEvent TurnChanged;
-    [SerializeField]
-    public LocationEvent PromotionEvent;
-    [SerializeField]
-    public LocationEvent PieceAddedEvent;
-
     public Affiliation CurrentTurn;
+    public PlayerController LocalPlayer;
 
     private List<GameObject> board;
     private int selectedIndex;          // Currently selected piece that is about to move
-    private bool playing = false;
+    private bool playing = true;
     private bool manualDestroy = false;
 
     // For debug and testing.  Remove for build
@@ -61,32 +48,13 @@ public class GameManager : Singleton<GameManager>
         SceneManager.sceneLoaded += sceneLoaded;
     }
 
-    private void sceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        allOff();
-        GameObject directionalLight = GameObject.Find("Directional Light");
-        directionalLight.GetComponent<Light>().enabled = false;
-        directionalLight.GetComponent<Light>().enabled = true;
-    }
-
-    /*
-     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
-     * Static so that it can be used by Chess Piece implementations for convenience
-     */
-    public int GetBoardIndex(int x, int y)
-    {
-        if (x < 0 || x > 3 || y < 0 || y > 7)
-        {
-            return -1;
-        }
-        return 4 * y + x;
-    }
-
-    public void StartGame()
-    {
-        allOff();
-        playing = true;
-    }
+    ///*
+    // * Look in Library class for this helper method
+    // */
+    //public int GetBoardIndex(int x, int y)
+    //{
+    //    return 0;
+    //}
 
 
     /*
@@ -108,12 +76,7 @@ public class GameManager : Singleton<GameManager>
             board.Clear();
         }
 
-        // Add GameManager as listener to onClick events
         board = newBoard;
-        foreach (GameObject go in board)
-        {
-            go.GetComponent<Square>().OnClick.AddListener(SquareClicked);
-        }
 
         // Start the game with White as current player
         CurrentTurn = Affiliation.White;
@@ -122,15 +85,14 @@ public class GameManager : Singleton<GameManager>
         allOff();
     }
 
-   
 
-    public int lastMoveLocation = -1;
-
-    private void SquareClicked(Square square)
+    public void SquareClicked(int squareIndex)
     {
         if (!playing)
             return;
         
+        Square square = board[squareIndex].GetComponent<Square>();
+
         if (square.GetComponent<Outline>().enabled)
         {
 
@@ -140,13 +102,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // Execute the moves of previously selected piece to the new square
-            List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, getIndex(square));
-            var moveCommand = actions.Where(a => a is MoveCommand).Select(a => a as MoveCommand).LastOrDefault();
-
-            if (moveCommand != null)
-                lastMoveLocation = moveCommand.MoveTo;
-
-
+            List<ChessCommand> actions = board[selectedIndex].GetComponent<Square>().Piece.Moved(board, selectedIndex, squareIndex);
 
             foreach (ChessCommand action in actions)
             {
@@ -156,7 +112,7 @@ public class GameManager : Singleton<GameManager>
             // Change turns
             selectedIndex = -1;
             CurrentTurn = CurrentTurn == Affiliation.White ? Affiliation.Black : Affiliation.White;
-            TurnChanged.Invoke();
+            GameEventSystem.Instance.TurnChanged.Invoke();
         }
         else if (square.Piece != null)
         {
@@ -172,7 +128,7 @@ public class GameManager : Singleton<GameManager>
             }
 
             // highlight valid moves
-            selectedIndex = getIndex(square);
+            selectedIndex = squareIndex;
             List<int> validMoves = square.Piece.AvailableMoves(board, selectedIndex);
             foreach (int i in validMoves)
             {
@@ -185,6 +141,12 @@ public class GameManager : Singleton<GameManager>
         allOff();
     }
 
+    private void sceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        allOff();
+        playing = true;
+    }
+
     private void allOff()
     {
         if (board == null)
@@ -194,19 +156,6 @@ public class GameManager : Singleton<GameManager>
         {
             go.GetComponent<Outline>().enabled = false;
         }
-    }
-
-    /*
-     * Determines what index this square corresponds to
-     * */
-    private int getIndex(Square square)
-    {
-        for (int i = 0; i < board.Count; ++i)
-        {
-            if (board[i].GetComponent<Square>() == square) { return i; }
-        }
-        Debug.LogWarning("Square not found on board");
-        return -1;
     }
 
     public override void OnDestroy()

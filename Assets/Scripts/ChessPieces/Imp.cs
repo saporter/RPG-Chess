@@ -18,8 +18,8 @@ public class Imp : MonoBehaviour, IChessPiece
     public List<int> AvailableMoves(List<GameObject> board, int currentPos)
     {
         List<int> validMoves = new List<int>();
-        if (GameManager.Instance.lastMoveLocation > -1)
-            validMoves.Add(GameManager.Instance.lastMoveLocation);
+        if (MoveCommand.LastMove != null)
+            validMoves.Add(MoveCommand.LastMove.MoveTo);
 
         return validMoves;
     }

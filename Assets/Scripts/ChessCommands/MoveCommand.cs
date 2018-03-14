@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveCommand : ChessCommand {
+    public static MoveCommand LastMove;
+
     private IChessPiece movingPiece;
     public int MoveFrom { get { return moveFrom; } }
     private int moveFrom;
@@ -25,6 +27,7 @@ public class MoveCommand : ChessCommand {
 
     public override void Execute(List<GameObject> board)
     {
+        LastMove = this;
         board[moveFrom].GetComponent<Square>().Piece = null;
         board[moveTo].GetComponent<Square>().Piece = movingPiece;
         movingPiece.gameObject.transform.position = board[moveTo].GetComponent<Square>().transform.position;

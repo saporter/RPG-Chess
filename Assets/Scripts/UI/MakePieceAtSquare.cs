@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class MakePieceAtSquare : MonoBehaviour {
     [SerializeField]
@@ -8,47 +9,58 @@ public class MakePieceAtSquare : MonoBehaviour {
     [SerializeField]
     GameObject BlackPiece;
 
-    private int Location = -1;
-    private bool IsWhite;
+    private int location = -1;
+    private bool isWhite;
+
+    public int Location { get { return location; } }
+    public bool IsWhite { get { return isWhite; } }
 
     public void MakePiece()
     {
-        if (MakePiece(GameManager.Instance.Board, IsWhite ? WhitePiece : BlackPiece))
-        {
-            GameManager.Instance.PieceAddedEvent.Invoke(Location, IsWhite ? "White" : "Black");
-        }
-        GameManager.Instance.PromotionEvent.Invoke(-1, "Off");
+        GameEventSystem.Instance.SelectedPieceEvent.Invoke(gameObject);
     }
 
     private void Start()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.AddListener(promotedLocation);
+            GameEventSystem.Instance.PromotionEvent.AddListener(promotedLocation);
+            GameEventSystem.Instance.MakePieceEvent.AddListener(MakePieceListener);
+        }
+    }
+
+    private void MakePieceListener(string stringID)
+    {
+        if (stringID == name)
+        {
+            MakePiece(GameManager.Instance.Board, isWhite ? WhitePiece : BlackPiece);
+            GameEventSystem.Instance.PromotionEvent.Invoke(-1, "Off");
         }
     }
 
     private void promotedLocation(int atLocation, string type)
     {
-        Location = atLocation;
-        IsWhite = type.Contains("White");
+        location = atLocation;
+        isWhite = type.Contains("White");
     }
 
-    private bool MakePiece(List<GameObject> board, GameObject prefab)
+    private void MakePiece(List<GameObject> board, GameObject prefab)
     {
-        if(Location < 0)
+        if(location < 0)
         {
-            Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  Are you sure the UI is displaying correctly?");
-            return false;
+            Debug.LogError("Location is less than zero.  MakePiece() does not know where to place created piece.  " +
+                           "Are you sure the UI is displaying correctly?" +
+                           "Does another MakePieceAtSquare UI element have the same name as this one? (add a trailing space to the other element if so)");
+            return;
         }
 
-        if (board[Location].GetComponent<Square>().Piece != null)
+        if (board[location].GetComponent<Square>().Piece != null)
         {
-            Destroy(board[Location].GetComponent<Square>().Piece.gameObject);
+            Destroy(board[location].GetComponent<Square>().Piece.gameObject);
         }
 
         GameObject piece = Instantiate(prefab);
-        Square square = board[Location].GetComponent<Square>();
+        Square square = board[location].GetComponent<Square>();
         piece.transform.position = square.transform.position;
         piece.transform.SetParent(square.transform.parent);
         square.Piece = piece.GetComponent<IChessPiece>();
@@ -56,17 +68,17 @@ public class MakePieceAtSquare : MonoBehaviour {
         if(square.Piece == null)
         {
             Debug.LogError("Prefab created does not implement interface IChessPiece");
-            return false;
+            return;
         }
 
-        return true;
+        GameEventSystem.Instance.PieceAddedEvent.Invoke(location, isWhite ? "White" : "Black");
     }
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(promotedLocation);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(promotedLocation);  // A good habit to get into
         }
     }
 }

@@ -17,7 +17,7 @@ public class Library
         int y = currentPos / 4 + yHop;
 
         //if we are on the board still
-        if (GameManager.Instance.GetBoardIndex(x, y) != -1)
+        if (GetBoardIndex(x, y) != -1)
         {
             int nextMove = currentPos + xHop + yHop * 4;
             if (board[nextMove].GetComponent<Square>().Piece == null)
@@ -35,5 +35,30 @@ public class Library
 
     }
 
+    /*
+     * Maps the x and y parameters (denoting a place on the board) to the single dimensional index used by the List<> array
+     * Static so that it can be used by Chess Piece implementations for convenience
+     */
+    public static int GetBoardIndex(int x, int y)
+    {
+        if (x < 0 || x > 3 || y < 0 || y > 7)
+        {
+            return -1;
+        }
+        return 4 * y + x;
+    }
+
+    /*
+     * Determines what index this square corresponds to
+     * */
+    public static int GetIndex(List<GameObject> board, Square square)
+    {
+        for (int i = 0; i < board.Count; ++i)
+        {
+            if (board[i].GetComponent<Square>() == square) { return i; }
+        }
+        Debug.LogWarning("Square not found on board");
+        return -1;
+    }
 
 }

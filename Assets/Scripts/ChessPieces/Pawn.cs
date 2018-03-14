@@ -45,7 +45,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         if(y + direction <= 7 && y + direction >= 0)
         {
             // One move forward
-            int index = GameManager.Instance.GetBoardIndex(x, y + 1 * direction);
+            int index = Library.GetBoardIndex(x, y + 1 * direction);
             if(board[index].GetComponent<Square>().Piece == null)
             {
                 validMoves.Add(index);
@@ -53,7 +53,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
                 // Two moves forward possible if never moved
                 if (startingPosition)
                 {
-                    index = GameManager.Instance.GetBoardIndex(x, y + 2 * direction);
+                    index = Library.GetBoardIndex(x, y + 2 * direction);
                     if (board[index].GetComponent<Square>().Piece == null)
                     {
                         validMoves.Add(index);
@@ -69,7 +69,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
 
         // Capture logic
         if(x != 0 && y != 7 && y != 0){
-            int index = GameManager.Instance.GetBoardIndex(x - 1, y + 1 * direction);
+            int index = Library.GetBoardIndex(x - 1, y + 1 * direction);
 
             // if(an enemy piece is found)
             if(board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team){
@@ -78,7 +78,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
         }
         if (x != 3 && y != 7 && y != 0)
         {
-            int index = GameManager.Instance.GetBoardIndex(x + 1, y + 1 * direction);
+            int index = Library.GetBoardIndex(x + 1, y + 1 * direction);
 
             // if(an enemy piece is found)
             if (board[index].GetComponent<Square>().Piece != null && board[index].GetComponent<Square>().Piece.Team != team)
@@ -124,18 +124,18 @@ public class Pawn : MonoBehaviour, IChessPiece {
             int x = to % 4;
             if(x != 0)
             {
-                IChessPiece p = board[GameManager.Instance.GetBoardIndex(x - 1, yend)].GetComponent<Square>().Piece;
+                IChessPiece p = board[Library.GetBoardIndex(x - 1, yend)].GetComponent<Square>().Piece;
                 if(p != null && p.Team != team && p.gameObject.GetComponent<Pawn>() != null)
                 {
-                    p.gameObject.GetComponent<Pawn>().EnPassantPossible(GameManager.Instance.GetBoardIndex(x, yend - direction));
+                    p.gameObject.GetComponent<Pawn>().EnPassantPossible(Library.GetBoardIndex(x, yend - direction));
                 }
             }
             if (x != 3)
             {
-                IChessPiece p = board[GameManager.Instance.GetBoardIndex(x + 1, yend)].GetComponent<Square>().Piece;
+                IChessPiece p = board[Library.GetBoardIndex(x + 1, yend)].GetComponent<Square>().Piece;
                 if (p != null && p.Team != team && p.gameObject.GetComponent<Pawn>() != null)
                 {
-                    p.gameObject.GetComponent<Pawn>().EnPassantPossible(GameManager.Instance.GetBoardIndex(x, yend - direction));
+                    p.gameObject.GetComponent<Pawn>().EnPassantPossible(Library.GetBoardIndex(x, yend - direction));
                 }
             }
         }
@@ -158,7 +158,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
     {
         enPassant = 2; // 2 to count first oponent move, then my own
         passantBoardIndex = atLocation;
-        GameManager.Instance.TurnChanged.AddListener(enPassantTurnCounter);
+        GameEventSystem.Instance.TurnChanged.AddListener(enPassantTurnCounter);
     }
 
     private void enPassantTurnCounter()
@@ -167,15 +167,15 @@ public class Pawn : MonoBehaviour, IChessPiece {
         if(enPassant <= 0)
         {
             passantBoardIndex = -1;
-            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
+            GameEventSystem.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);
         }
     }
 
     private void OnDestroy()
     {
-        if(GameManager.Instance != null)
+        if(GameEventSystem.Instance != null)
         {
-            GameManager.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
+            GameEventSystem.Instance.TurnChanged.RemoveListener(enPassantTurnCounter);  // A good habit to get into
         }
     }
 

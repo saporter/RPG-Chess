@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 using cakeslice;
 
 public class Setup : MonoBehaviour {
@@ -20,12 +21,35 @@ public class Setup : MonoBehaviour {
 
     public void LoadMainLevel()
     {
-        SceneManager.LoadSceneAsync("Main");
-        GameManager.Instance.StartGame();
+        GameEventSystem.Instance.LoadNewSceneEvent.Invoke("Main");
+
     }
 
-	// Use this for initialization
-	void Start () {
+    private void Start()
+    {
+        StartCoroutine(WaitForPlayerReady());
+        //BeginSetup();
+    }
+
+    IEnumerator WaitForPlayerReady()
+    {
+        bool flag = true;
+        while (flag)
+        {
+            foreach(UnityEngine.Networking.PlayerController player in ClientScene.localPlayers)
+            {
+                if(player.unetView.isLocalPlayer)
+                {
+                    flag = false;
+                }
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        BeginSetup();
+    }
+
+    // Use this for initialization
+    public void BeginSetup () {
         // Create a new board and place Kings
         GameObject squares = Instantiate(BoardSquares);
         List<GameObject> board = squares.GetChildren();
@@ -57,7 +81,7 @@ public class Setup : MonoBehaviour {
 
         // Setup board in GameManager and listen for pieces added
         GameManager.Instance.ResetBoard(board);
-        GameManager.Instance.PieceAddedEvent.AddListener(pieceAdded);
+        GameEventSystem.Instance.PieceAddedEvent.AddListener(pieceAdded);
         squares.transform.SetParent(GameManager.Instance.transform);
 
         // Some slot UI references and setup
@@ -133,9 +157,9 @@ public class Setup : MonoBehaviour {
 
     private void OnDestroy()
     {
-        if (GameManager.Instance != null)
+        if (GameEventSystem.Instance != null)
         {
-            GameManager.Instance.PromotionEvent.RemoveListener(pieceAdded);  // A good habit to get into
+            GameEventSystem.Instance.PromotionEvent.RemoveListener(pieceAdded);  // A good habit to get into
         }
     }
 }

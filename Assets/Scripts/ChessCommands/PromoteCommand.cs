@@ -25,6 +25,6 @@ public class PromoteCommand : ChessCommand
 
     public override void Execute(List<GameObject> board)
     {
-        GameManager.Instance.PromotionEvent.Invoke(location, pieceType);
+        GameEventSystem.Instance.PromotionEvent.Invoke(location, pieceType);
     }
 }
