@@ -725,7 +725,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1088959847624130, guid: 8a4ab32f2d68947b4aad93677d5584af, type: 2}
       propertyPath: m_Name
-      value: 'Queen Button '
+      value: Queen Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a4ab32f2d68947b4aad93677d5584af, type: 2}
@@ -1649,7 +1649,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1342054329770336, guid: bd1b0fbbd634446eabc49fee9b09166d, type: 2}
       propertyPath: m_Name
-      value: 'Imp Button '
+      value: Imp Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd1b0fbbd634446eabc49fee9b09166d, type: 2}
@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1008658245}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.40991175
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3058,7 +3058,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1264821415139036, guid: 7d389bd17c0344266a1acad59b872f8a, type: 2}
       propertyPath: m_Name
-      value: 'Rook Button '
+      value: Rook Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d389bd17c0344266a1acad59b872f8a, type: 2}
@@ -3545,7 +3545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1304509723960832, guid: ef40899901483470bb8dea6b631c6274, type: 2}
       propertyPath: m_Name
-      value: 'Priest Button '
+      value: Priest Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef40899901483470bb8dea6b631c6274, type: 2}
@@ -4426,7 +4426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1565923020269150, guid: 6827dcc6f62764e249a257e4d4d02ec1, type: 2}
       propertyPath: m_Name
-      value: 'Bishop Button '
+      value: Bishop Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6827dcc6f62764e249a257e4d4d02ec1, type: 2}
@@ -4601,7 +4601,7 @@ Prefab:
     - target: {fileID: 224599624869236910, guid: bc36f95ef7c5143a5bb0635e51cc4312,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -135
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224599624869236910, guid: bc36f95ef7c5143a5bb0635e51cc4312,
         type: 2}
@@ -4908,7 +4908,7 @@ Prefab:
     - target: {fileID: 224782552580644084, guid: bd1b0fbbd634446eabc49fee9b09166d,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224782552580644084, guid: bd1b0fbbd634446eabc49fee9b09166d,
         type: 2}
@@ -5320,7 +5320,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1709838186357846, guid: bc36f95ef7c5143a5bb0635e51cc4312, type: 2}
       propertyPath: m_Name
-      value: 'Cardinal Button '
+      value: Cardinal Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc36f95ef7c5143a5bb0635e51cc4312, type: 2}
@@ -5390,7 +5390,7 @@ Prefab:
     - target: {fileID: 224543534538302612, guid: e06d74a92497243a49dad6643568c6f4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -195
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224543534538302612, guid: e06d74a92497243a49dad6643568c6f4,
         type: 2}
@@ -6064,7 +6064,7 @@ Prefab:
     - target: {fileID: 224877005168861716, guid: c2ab5c7300897459e84159daab5409ae,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224877005168861716, guid: c2ab5c7300897459e84159daab5409ae,
         type: 2}
@@ -6254,7 +6254,7 @@ Prefab:
     - target: {fileID: 224982177099953980, guid: 7d389bd17c0344266a1acad59b872f8a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -105
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224982177099953980, guid: 7d389bd17c0344266a1acad59b872f8a,
         type: 2}
@@ -6526,7 +6526,7 @@ Prefab:
     - target: {fileID: 224384551106902074, guid: 6827dcc6f62764e249a257e4d4d02ec1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224384551106902074, guid: 6827dcc6f62764e249a257e4d4d02ec1,
         type: 2}
@@ -6839,6 +6839,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885568067007730, guid: 5e9114d0b3a2abc4a8a40d2e68bfe0ed, type: 2}
+      propertyPath: m_Name
+      value: Archer Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9114d0b3a2abc4a8a40d2e68bfe0ed, type: 2}
@@ -7486,7 +7490,7 @@ Prefab:
     - target: {fileID: 224701880441401728, guid: ef40899901483470bb8dea6b631c6274,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -165
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224701880441401728, guid: ef40899901483470bb8dea6b631c6274,
         type: 2}
@@ -7647,7 +7651,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1593789923545054, guid: c2ab5c7300897459e84159daab5409ae, type: 2}
       propertyPath: m_Name
-      value: 'Knight Button '
+      value: Knight Button_
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2ab5c7300897459e84159daab5409ae, type: 2}
@@ -7712,7 +7716,7 @@ Prefab:
     - target: {fileID: 224431437701154382, guid: 5e9114d0b3a2abc4a8a40d2e68bfe0ed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -255
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224431437701154382, guid: 5e9114d0b3a2abc4a8a40d2e68bfe0ed,
         type: 2}
@@ -8528,7 +8532,7 @@ Prefab:
     - target: {fileID: 224221775517605698, guid: 8a4ab32f2d68947b4aad93677d5584af,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224221775517605698, guid: 8a4ab32f2d68947b4aad93677d5584af,
         type: 2}
