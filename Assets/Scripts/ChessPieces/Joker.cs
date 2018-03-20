@@ -52,8 +52,11 @@ public class Joker : MonoBehaviour, IChessPiece {
             var piece = board[index].GetComponent<Square>().Piece;
             if (!(piece == null || piece.gameObject.GetComponent<King>() == null))
             {
-                rowClear = false;
-                break;
+                if (piece.Team == team)
+                {
+                    rowClear = false;
+                    break;
+                }
             }
             space += direction;
         }
