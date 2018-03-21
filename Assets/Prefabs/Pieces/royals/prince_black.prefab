@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 23543839380784740}
   - component: {fileID: 54232722923928268}
   - component: {fileID: 65507776109649132}
-  - component: {fileID: 114634484296927914}
+  - component: {fileID: 114400364822561232}
   m_Layer: 2
   m_Name: prince_black
   m_TagString: black
@@ -248,7 +248,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8554608, z: 1.9197927}
   m_Center: {x: 0, y: 0.019709885, z: 0.9197936}
---- !u!114 &114634484296927914
+--- !u!114 &114400364822561232
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1342967174948710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c13931a28fe54e1faab45516882095d, type: 3}
+  m_Script: {fileID: 11500000, guid: 826f36cf04549604e94a2339a01674c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1

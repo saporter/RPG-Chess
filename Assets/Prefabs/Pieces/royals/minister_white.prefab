@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64106864213710490}
   - component: {fileID: 54743855563101736}
   - component: {fileID: 65917327608924718}
-  - component: {fileID: 114813167114959964}
+  - component: {fileID: 114499421284719082}
   m_Layer: 2
   m_Name: minister_white
   m_TagString: white
@@ -127,7 +127,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6816612, y: 1.7163255, z: 0.6816612}
   m_Center: {x: 0.033991855, y: 0.84795475, z: 0.00000008940695}
---- !u!114 &114813167114959964
+--- !u!114 &114499421284719082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113282938598770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c13931a28fe54e1faab45516882095d, type: 3}
+  m_Script: {fileID: 11500000, guid: f11ea4975298fd84e82c1054efc1fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0

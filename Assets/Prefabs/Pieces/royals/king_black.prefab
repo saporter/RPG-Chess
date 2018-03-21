@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 114080729858370598}
   m_Layer: 2
   m_Name: king_black
-  m_TagString: white
+  m_TagString: black
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
