@@ -22,7 +22,9 @@ GameObject:
   - component: {fileID: 64683124401673762}
   - component: {fileID: 54516665207608188}
   - component: {fileID: 65345298365524744}
-  - component: {fileID: 114793234329659868}
+  - component: {fileID: 114419196931710598}
+  - component: {fileID: 82976585367985244}
+  - component: {fileID: 114760999002559448}
   m_Layer: 2
   m_Name: dragonrider_black
   m_TagString: black
@@ -1020,7 +1022,87 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114793234329659868
+--- !u!82 &82976585367985244
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008138236880500}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114419196931710598
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1028,7 +1110,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1008138236880500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d00d0d35ab215445a998ad3fbfae64fb, type: 3}
+  m_Script: {fileID: 11500000, guid: b34535f09726b45c08d4e6986ad01644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+--- !u!114 &114760999002559448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008138236880500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dacd6aec0e6b944c85756f852725146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClickSE: {fileID: 8300000, guid: 1aeeb6344f275194ca7fcd3535449c56, type: 3}
+  onMoveSE: {fileID: 8300000, guid: 28172ece9b7d011409619ab4d3d2b4b5, type: 3}
+  onCaptureSE: {fileID: 8300000, guid: ccc8a21173a5e6845a3659c4be1bd4d7, type: 3}
