@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114780586149767928}
   - component: {fileID: 82707535435438180}
   - component: {fileID: 114038478481481470}
+  - component: {fileID: 114488426875686466}
   m_Layer: 2
   m_Name: bishop_black
   m_TagString: white
@@ -224,6 +225,18 @@ MonoBehaviour:
   onClickSE: {fileID: 8300000, guid: 265a0ea29eaf9814ea57c883f9ae64fa, type: 3}
   onMoveSE: {fileID: 8300000, guid: 3eb93fa7c38902d469aa0324960658a1, type: 3}
   onCaptureSE: {fileID: 8300000, guid: 86b985725f7a2104da4558e5a87ccd7d, type: 3}
+--- !u!114 &114488426875686466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1144577762022746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 0}
 --- !u!114 &114780586149767928
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114062073250034540}
   - component: {fileID: 82843965977296464}
   - component: {fileID: 114047342579531728}
+  - component: {fileID: 114134740282059022}
   m_Layer: 2
   m_Name: queen_black
   m_TagString: white
@@ -236,3 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
+--- !u!114 &114134740282059022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1351478530774594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: 591c99acbb6041f4ba55e49ecc1184ba,
+    type: 2}

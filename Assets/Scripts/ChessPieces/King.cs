@@ -7,10 +7,12 @@ public class King : MonoBehaviour, IChessPiece {
     Affiliation team;
 
     private AudioForPieces audioPlayer;
+    GameObject myPrince;
 
     void Start()
     {
         audioPlayer = GetComponent<AudioForPieces>();
+        InvokeRepeating("FindPrince", 3, 3);
     }
 
     public Affiliation Team
@@ -129,5 +131,24 @@ public class King : MonoBehaviour, IChessPiece {
     private bool emptyOrOpponent(List<GameObject> board, int index)
     {
         return board[index].GetComponent<Square>().Piece == null || board[index].GetComponent<Square>().Piece.Team != team;
+    }
+
+    void FindPrince()
+    {
+        if(this.gameObject.tag == "black")
+            myPrince = GameObject.Find("prince_black(Clone)");
+        else
+            myPrince = GameObject.Find("prince_white(Clone)");
+    }
+
+    void OnDestroy()
+    {
+        if (myPrince)
+        {
+            myPrince.GetComponent<Prince>().NewKing();
+            Debug.Log("The new king is born");
+        }
+        else
+            Debug.Log("Game over" + team + "loses");
     }
 }
