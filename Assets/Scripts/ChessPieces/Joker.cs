@@ -27,6 +27,7 @@ public class Joker : MonoBehaviour, IChessPiece {
         int x = currentPos % 4;
         int y = currentPos / 4;
         var allMoves = new List<int>();
+        audioPlayer.SE_PickUp();
 
         // Can move up or down one space if empty
         if(y != 0)
@@ -87,10 +88,12 @@ public class Joker : MonoBehaviour, IChessPiece {
                 if(board[index].GetComponent<Square>().Piece != null)
                 {
                     moves.Add(new CaptureCommand(index));
+
                 }
                 space += direction;
             }
             moves.Add(new MoveCommand(this, from, to));
+            audioPlayer.SE_Move();
         }
 
         return moves;
