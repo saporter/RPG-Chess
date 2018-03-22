@@ -38,7 +38,7 @@ public class Setup : MonoBehaviour {
         {
             foreach(UnityEngine.Networking.PlayerController player in ClientScene.localPlayers)
             {
-                if(player.unetView.isLocalPlayer)
+                if(player.unetView != null && player.unetView.isLocalPlayer)
                 {
                     flag = false;
                 }
