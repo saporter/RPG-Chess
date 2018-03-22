@@ -7,12 +7,10 @@ public class King : MonoBehaviour, IChessPiece {
     Affiliation team;
 
     private AudioForPieces audioPlayer;
-    GameObject myPrince;
 
     void Start()
     {
         audioPlayer = GetComponent<AudioForPieces>();
-        InvokeRepeating("FindPrince", 3, 3);
     }
 
     public Affiliation Team
@@ -133,22 +131,11 @@ public class King : MonoBehaviour, IChessPiece {
         return board[index].GetComponent<Square>().Piece == null || board[index].GetComponent<Square>().Piece.Team != team;
     }
 
-    void FindPrince()
-    {
-        if(this.gameObject.tag == "black")
-            myPrince = GameObject.Find("prince_black(Clone)");
-        else
-            myPrince = GameObject.Find("prince_white(Clone)");
-    }
-
     void OnDestroy()
     {
-        if (myPrince)
+        if (GameEventSystem.Instance != null)
         {
-            myPrince.GetComponent<Prince>().NewKing();
-            Debug.Log("The new king is born");
+            GameEventSystem.Instance.MakePieceEvent.Invoke("PrincePromotion" + team);
         }
-        else
-            Debug.Log("Game over" + team + "loses");
     }
 }

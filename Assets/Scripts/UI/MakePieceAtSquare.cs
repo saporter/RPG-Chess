@@ -79,6 +79,7 @@ public class MakePieceAtSquare : MonoBehaviour {
         if (GameEventSystem.Instance != null)
         {
             GameEventSystem.Instance.PromotionEvent.RemoveListener(promotedLocation);  // A good habit to get into
+            GameEventSystem.Instance.MakePieceEvent.RemoveListener(MakePieceListener);
         }
     }
 }

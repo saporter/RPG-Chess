@@ -459,9 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  myRenderer:
-  - {fileID: 23143837811746292}
-  - {fileID: 23954388586430600}
+  KingPrefab: {fileID: 1898428656692366, guid: 53b368757d0bf6846b18791984536e2f, type: 2}
 --- !u!114 &114868270843958092
 MonoBehaviour:
   m_ObjectHideFlags: 1

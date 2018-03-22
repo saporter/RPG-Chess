@@ -61,4 +61,19 @@ public class Library
         return -1;
     }
 
+    /*
+     * Determines what index this square corresponds to
+     * */
+    public static int GetIndex(List<GameObject> board, IChessPiece piece)
+    {
+        for (int i = 0; i < board.Count; ++i)
+        {
+            if (board[i].GetComponent<Square>().Piece == piece) { return i; }
+        }
+
+        Debug.LogWarning("Piece not found on board");
+
+        return -1;
+    }
+
 }
