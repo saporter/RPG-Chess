@@ -81,7 +81,7 @@ public class Knight : MonoBehaviour, IChessPiece
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(name + " Captured");
     }
 
     private bool emptyOrOpponent(List<GameObject> board, int x, int y)

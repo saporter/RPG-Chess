@@ -123,7 +123,8 @@ public class King : MonoBehaviour, IChessPiece {
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        GameEventSystem.Instance.MakePieceEvent.Invoke("PrincePromotion" + team);
+        Debug.Log(name + " Captured");
     }
 
     private bool emptyOrOpponent(List<GameObject> board, int index)
@@ -131,11 +132,4 @@ public class King : MonoBehaviour, IChessPiece {
         return board[index].GetComponent<Square>().Piece == null || board[index].GetComponent<Square>().Piece.Team != team;
     }
 
-    void OnDestroy()
-    {
-        if (GameEventSystem.Instance != null)
-        {
-            GameEventSystem.Instance.MakePieceEvent.Invoke("PrincePromotion" + team);
-        }
-    }
 }

@@ -57,6 +57,6 @@ public class TestPiece : MonoBehaviour, IChessPiece {
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(name + " Captured");
     }
 }

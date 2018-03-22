@@ -151,7 +151,7 @@ public class Pawn : MonoBehaviour, IChessPiece {
 
     public void OnDeath()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(name + " Captured");
     }
 
     public void EnPassantPossible(int atLocation)

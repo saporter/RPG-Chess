@@ -12,9 +12,11 @@ public class CaptureCommand : ChessCommand
 
     public override void Execute(List<GameObject> board)
     {
-        if(board[location].GetComponent<Square>().Piece != null){
+        var Piece = board[location].GetComponent<Square>().Piece;
+        if(Piece != null){
             // We may want to do something other than just destroy the GameObject.  This will do for now
-            GameObject.Destroy(board[location].GetComponent<Square>().Piece.gameObject);
+            Piece.OnDeath();
+            GameObject.Destroy(Piece.gameObject);
             board[location].GetComponent<Square>().Piece = null;
             
 
