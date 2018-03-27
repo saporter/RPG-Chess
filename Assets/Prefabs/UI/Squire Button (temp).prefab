@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e381489ab0a41b1bfe0febd6862506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhitePiece: {fileID: 1572097457183788, guid: cb1113ba79a084f4593ae02d368eac6d, type: 2}
-  BlackPiece: {fileID: 1572097457183788, guid: 9ffbf6679409c44bb9f85414b0ba1ffa, type: 2}
+  WhitePiece: {fileID: 1717703790499668, guid: b0c29f269d9c32546806a89d849dcbf0, type: 2}
+  BlackPiece: {fileID: 1387743225545332, guid: b24cd8ad5c90ad548aefc19d542e58b0, type: 2}
 --- !u!114 &114859650151571264
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1581,7 +1581,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0000038671537}
-  m_SizeDelta: {x: 0, y: 510}
+  m_SizeDelta: {x: 0, y: 610}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &217620492
 MonoBehaviour:
@@ -1654,7 +1654,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0000038671537}
-  m_SizeDelta: {x: 0, y: 450}
+  m_SizeDelta: {x: 0, y: 550}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &222003374
 MonoBehaviour:
@@ -2042,7 +2042,7 @@ GameObject:
   - component: {fileID: 348262168}
   - component: {fileID: 348262169}
   m_Layer: 5
-  m_Name: Pawn Chooser (fake - just normal pawns)
+  m_Name: Pawn Chooser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2828,6 +2828,10 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958702288121650, guid: f863d124de1f34dee9907d8c4b24bc14, type: 2}
+      propertyPath: m_Name
+      value: Squire Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f863d124de1f34dee9907d8c4b24bc14, type: 2}
@@ -3959,7 +3963,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1606119669}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.4
+  m_Size: 0.3272727
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5287,6 +5291,11 @@ Prefab:
     - target: {fileID: 1139793086451502, guid: 57b1f3636bf164b8cbdcefac3e6ff791, type: 2}
       propertyPath: m_Name
       value: Test Piece Button_
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371117119764706, guid: 57b1f3636bf164b8cbdcefac3e6ff791,
+        type: 2}
+      propertyPath: m_Text
+      value: Test Piece
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57b1f3636bf164b8cbdcefac3e6ff791, type: 2}
@@ -10417,6 +10426,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114371117119764706, guid: 57b1f3636bf164b8cbdcefac3e6ff791,
+        type: 2}
+      propertyPath: m_Text
+      value: Test Piece
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57b1f3636bf164b8cbdcefac3e6ff791, type: 2}

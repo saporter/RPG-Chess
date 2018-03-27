@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114623314958546708}
   - component: {fileID: 82707653469076356}
   - component: {fileID: 114792240387917344}
+  - component: {fileID: 114066574893914126}
   m_Layer: 2
   m_Name: rook_white
   m_TagString: white
@@ -210,6 +211,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114066574893914126
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638818894355302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: 0a4b2ba8b6794454eb5a6a0a1e8e001f,
+    type: 2}
 --- !u!114 &114623314958546708
 MonoBehaviour:
   m_ObjectHideFlags: 1
