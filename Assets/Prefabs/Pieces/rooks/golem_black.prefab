@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 82999802145072490}
   - component: {fileID: 114220431280993782}
   - component: {fileID: 114876078669627276}
+  - component: {fileID: 114731362271926434}
   m_Layer: 2
   m_Name: golem_black
   m_TagString: white
@@ -224,6 +225,19 @@ MonoBehaviour:
   onClickSE: {fileID: 8300000, guid: 46a97c955b628f1459986bcbd5ff85d2, type: 3}
   onMoveSE: {fileID: 8300000, guid: 85e44948dcbbb8d40a2db06007b5c2ef, type: 3}
   onCaptureSE: {fileID: 8300000, guid: ac5a1616ac9101e49b7d10712d3a4d91, type: 3}
+--- !u!114 &114731362271926434
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638818894355302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: 358b3fffc798d544c816ad082d90a403,
+    type: 2}
 --- !u!114 &114876078669627276
 MonoBehaviour:
   m_ObjectHideFlags: 1

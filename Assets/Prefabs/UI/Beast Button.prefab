@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114245857855975350}
   - component: {fileID: 114902661810534430}
   m_Layer: 5
-  m_Name: Test Piece Button
+  m_Name: Beast Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Beast (3)
+  m_Text: Test Pieces Here
 --- !u!114 &114902661810534430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e381489ab0a41b1bfe0febd6862506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhitePiece: {fileID: 1242886655131882, guid: faa8b9ba185b69447825f459ba2ef2d9, type: 2}
-  BlackPiece: {fileID: 1176729023473636, guid: 0faf12b0a7007784bb45bee4fe1cfaeb, type: 2}
+  WhitePiece: {fileID: 1683071340659472, guid: 208a54fdcecad554aa4252e22e9071a4, type: 2}
+  BlackPiece: {fileID: 1785029389221436, guid: d7929d4246637c94a8dabe7062ef3a76, type: 2}
 --- !u!222 &222459017866352536
 CanvasRenderer:
   m_ObjectHideFlags: 1

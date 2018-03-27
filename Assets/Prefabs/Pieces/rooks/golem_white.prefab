@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 82707653469076356}
   - component: {fileID: 114792240387917344}
   - component: {fileID: 114969631493115684}
+  - component: {fileID: 114310489319092834}
   m_Layer: 2
   m_Name: golem_white
   m_TagString: white
@@ -210,6 +211,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114310489319092834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1638818894355302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708a069958694bd3ab158c99a58bf55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ImagePrefab: {fileID: 1826817160698532, guid: 358b3fffc798d544c816ad082d90a403,
+    type: 2}
 --- !u!114 &114792240387917344
 MonoBehaviour:
   m_ObjectHideFlags: 1
