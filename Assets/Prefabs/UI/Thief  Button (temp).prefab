@@ -58,8 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99e381489ab0a41b1bfe0febd6862506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WhitePiece: {fileID: 1572097457183788, guid: cb1113ba79a084f4593ae02d368eac6d, type: 2}
-  BlackPiece: {fileID: 1572097457183788, guid: 9ffbf6679409c44bb9f85414b0ba1ffa, type: 2}
+  WhitePiece: {fileID: 1363418086393072, guid: d568e211a1ca1a745903b73288ba4644, type: 2}
+  BlackPiece: {fileID: 1049260724288052, guid: b4f66aa0489bd764a8ee7c777f617960, type: 2}
 --- !u!114 &114440478412112932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,7 +119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thief (2)
+  m_Text: Brute (3)
 --- !u!114 &114739203921507752
 MonoBehaviour:
   m_ObjectHideFlags: 1
